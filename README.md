@@ -1,2 +1,3 @@
-# breez
+# Breez
+
 Weather app
