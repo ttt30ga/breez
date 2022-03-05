@@ -1,0 +1,211 @@
+:root {
+	--accent: rgba(119, 206, 255, 1);
+	--action: rgba(39, 255, 164, 1);
+	--background: rgba(255, 254, 233, 1);
+	--gost: rgba(27, 43, 71, 0.05);
+	--main: rgba(34, 53, 86, 1);
+	--secondary: rgba(34, 53, 86, 0.3);
+}
+
+html,
+.page {
+	background-color: var(--background);
+	padding: 0 1em;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.page {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.content {
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+	grid-template-rows: auto;
+	grid-template-areas:
+		'locationData locationData locationData locationData locationData locationData locationData temperatureData'
+		'tempData tempData sunData sunData skyData skyData airData airData';
+	column-gap: 2em;
+	row-gap: 2em;
+	padding-top: 2em;
+}
+
+.locationData {
+	grid-area: locationData;
+	justify-self: start;
+}
+
+.temperatureData {
+	grid-area: temperatureData;
+	justify-self: end;
+	align-self: start;
+}
+
+.tempData {
+	grid-area: tempData;
+}
+
+.sunData {
+	grid-area: sunData;
+}
+
+.skyData {
+	grid-area: skyData;
+}
+
+.airData {
+	grid-area: airData;
+}
+
+.flex {
+	display: flex;
+	align-items: flex-start;
+}
+
+.horizontal {
+	flex-direction: row;
+	align-items: center;
+}
+
+.vertical {
+	flex-direction: column;
+}
+
+.reverse {
+	flex-direction: row-reverse;
+}
+
+.pill {
+	background-color: var(--gost);
+	border-radius: 40px;
+	padding: 1em;
+	margin-right: 0.8em;
+	width: -moz-fit-content;
+	width: fit-content;
+}
+
+.details > h4 {
+	margin: 0.3em 2em 0.3em 0 !important;
+}
+
+.spaceS {
+	margin: 1em 0;
+}
+
+/* Define text styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+span,
+.navbar {
+	font-family: Product-Sans-Medium-Regular, Arial, Helvetica, sans-serif;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	margin-bottom: 0 !important;
+	color: var(--main);
+}
+
+.navbar {
+	padding: 2em 0 !important;
+}
+
+.container-fluid {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
+.btn,
+.form-control {
+	border-radius: 12px !important;
+	padding: 12px 20px !important;
+	border: none !important;
+}
+
+.form-control {
+	background-color: var(--gost) !important;
+	border: none !important;
+	color: var(--main) !important;
+}
+
+.btn {
+	background: var(--action) !important;
+	color: var(--main) !important;
+}
+
+.secondary {
+	color: var(--secondary);
+}
+
+.main {
+	color: var(--main);
+}
+
+.titleXL {
+	font-family: Product-Sans-Medium-Regular, Arial, Helvetica, sans-serif;
+	font-size: 10em !important;
+}
+
+.titleL {
+	font-family: Product-Sans-Bold, Arial, Helvetica, sans-serif;
+	font-size: 5em !important;
+}
+
+.titleM {
+	font-family: Product-Sans-Bold, Arial, Helvetica, sans-serif;
+	font-size: 1.8em !important;
+}
+
+.titleS {
+	font-family: Product-Sans-Medium-Regular, Arial, Helvetica, sans-serif;
+	font-size: 1.4em !important;
+}
+
+.titleXS {
+	font-family: Product-Sans-Medium-Regular, Arial, Helvetica, sans-serif;
+	font-size: 1em !important;
+}
+
+@font-face {
+	font-family: 'Product-Sans-Regular';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Product Sans Regular'),
+		url('./fonts/ProductSans-Regular.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Product-Sans-Bold';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Product Sans Bold'),
+		url('./fonts/ProductSans-Bold.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Product-Sans-Medium-Regular';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Product Sans Medium Regular'),
+		url('./fonts/ProductSans-Medium.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Product-Sans-Black-Regular';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Product Sans Black Regular'),
+		url('./fonts/ProductSans-Black.woff') format('woff');
+}
