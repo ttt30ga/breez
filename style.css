@@ -7,12 +7,6 @@
 	--secondary: rgba(34, 53, 86, 0.3);
 }
 
-html,
-.page {
-	background-color: var(--background);
-	padding: 0 1em;
-}
-
 * {
 	margin: 0;
 	padding: 0;
@@ -21,48 +15,18 @@ html,
 	-moz-osx-font-smoothing: grayscale;
 }
 
+body {
+	background-color: var(--background) !important;
+}
+
 .page {
-	max-width: 1200px;
-	margin: 0 auto;
+	max-width: 1200px !important;
+	margin: auto;
+	padding: 0 2em !important;
 }
 
 .content {
-	display: grid;
-	grid-template-columns: repeat(8, 1fr);
-	grid-template-rows: auto;
-	grid-template-areas:
-		'locationData locationData locationData locationData locationData locationData locationData temperatureData'
-		'tempData tempData sunData sunData skyData skyData airData airData';
-	column-gap: 2em;
-	row-gap: 2em;
-	padding-top: 2em;
-}
-
-.locationData {
-	grid-area: locationData;
-	justify-self: start;
-}
-
-.temperatureData {
-	grid-area: temperatureData;
-	justify-self: end;
-	align-self: start;
-}
-
-.tempData {
-	grid-area: tempData;
-}
-
-.sunData {
-	grid-area: sunData;
-}
-
-.skyData {
-	grid-area: skyData;
-}
-
-.airData {
-	grid-area: airData;
+	padding: 2em 0;
 }
 
 .flex {
@@ -97,7 +61,7 @@ html,
 }
 
 .spaceS {
-	margin: 1em 0;
+	margin: 1em 0 0;
 }
 
 /* Define text styles */
@@ -156,6 +120,7 @@ span,
 .titleXL {
 	font-family: Product-Sans-Medium-Regular, Arial, Helvetica, sans-serif;
 	font-size: 10em !important;
+	line-height: 1em;
 }
 
 .titleL {

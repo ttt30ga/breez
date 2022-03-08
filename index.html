@@ -15,133 +15,139 @@
 	</head>
 	<body class="page">
 		<!-- Navigation -->
-		<nav class="navbar navbar-light">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="#">
-					<img src="./images/logo.svg" alt="" width="120" />
-				</a>
-				<!-- Search -->
-				<form class="d-flex" name="search">
-					<div class="input-group">
-						<input
-							id="search"
-							class="form-control me-2 titleXS"
-							type="search"
-							placeholder="City"
-							aria-label="Search"
-						/>
-					</div>
-					<button class="btn titleXS" type="submit" id="go" onclick="search();">
-						Go!
-					</button>
-				</form>
-			</div>
-		</nav>
-		<section class="content">
-			<!-- Location -->
-			<div class="locationData">
-				<h1 class="titleL" id="location"></h1>
-				<h2 class="titleM secondary" id="date"></h2>
-				<h3 class="titleS secondary" id="description"></h3>
-			</div>
-
-			<!-- Temperature -->
-			<div class="temperatureData">
-				<h3 class="titleXL" id="temp"></h3>
-			</div>
-
-			<div class="tempData">
-				<!-- Min -->
-				<div class="flex horizontal spaceS">
-					<div class="pill">
-						<img src="./images/icon-temp.svg" alt="sunrise" />
-					</div>
-					<div class="vertical details">
-						<h4 class="titleXS secondary">Min</h4>
-						<h4 class="titleXS primary" id="temp_min"></h4>
-					</div>
+		<section class="container-fluid">
+			<nav class="navbar navbar-light">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="#">
+						<img src="./images/logo.svg" alt="" width="120" />
+					</a>
+					<!-- Search -->
+					<form class="d-flex" name="search">
+						<div class="input-group">
+							<input
+								id="search"
+								class="form-control me-2 titleXS"
+								type="search"
+								placeholder="City"
+								aria-label="Search"
+							/>
+						</div>
+						<button class="btn titleXS" type="submit" id="go" onclick="search();">
+							Go!
+						</button>
+					</form>
 				</div>
-
-				<!-- Max -->
-				<div class="flex horizontal spaceS">
-					<div class="pill">
-						<img src="./images/icon-temp.svg" alt="sunset" />
-					</div>
-					<div class="vertical details">
-						<h4 class="titleXS secondary">Max</h4>
-						<h4 class="titleXS primary" id="temp_max"></h4>
-					</div>
+			</nav>
+		</section>
+		<section class="container-fluid">
+			<div class="row content">
+				<!-- Location -->
+				<div class="col-lg-8">
+					<h1 class="titleL" id="location"></h1>
+					<h2 class="titleM secondary" id="date"></h2>
+					<h3 class="titleS secondary" id="description"></h3>
+				</div>
+	
+				<!-- Temperature -->
+				<div class="col-lg-4">
+					<h3 class="text-end titleXL" id="temp"></h3>
 				</div>
 			</div>
 
-			<div class="sunData">
-				<!-- Sunrise -->
-				<div class="flex horizontal spaceS">
-					<div class="pill">
-						<img src="./images/icon-sunrise.svg" alt="sunrise" />
+			<div class="row content">
+				<div class="col">
+					<!-- Min -->
+					<div class="flex horizontal spaceS">
+						<div class="pill">
+							<img src="./images/icon-temp.svg" alt="sunrise" />
+						</div>
+						<div class="vertical details">
+							<h4 class="titleXS secondary">Min</h4>
+							<h4 class="titleXS primary" id="temp_min"></h4>
+						</div>
 					</div>
-					<div class="vertical details">
-						<h4 class="titleXS secondary">Sunrise</h4>
-						<h4 class="titleXS primary" id="sunrise"></h4>
-					</div>
-				</div>
-
-				<!-- Sunset -->
-				<div class="flex horizontal spaceS">
-					<div class="pill">
-						<img src="./images/icon-sunset.svg" alt="sunset" />
-					</div>
-					<div class="vertical details">
-						<h4 class="titleXS secondary">Sunset</h4>
-						<h4 class="titleXS primary" id="sunset"></h4>
-					</div>
-				</div>
-			</div>
-
-			<div class="skyData">
-				<!-- Cloud -->
-				<div class="flex horizontal spaceS">
-					<div class="pill">
-						<img src="./images/icon-cloud.svg" alt="cloud" />
-					</div>
-					<div class="vertical details">
-						<h4 class="titleXS secondary">Clouds</h4>
-						<h4 class="titleXS primary" id="clouds"></h4>
+	
+					<!-- Max -->
+					<div class="flex horizontal spaceS">
+						<div class="pill">
+							<img src="./images/icon-temp.svg" alt="sunset" />
+						</div>
+						<div class="vertical details">
+							<h4 class="titleXS secondary">Max</h4>
+							<h4 class="titleXS primary" id="temp_max"></h4>
+						</div>
 					</div>
 				</div>
-
-				<!-- Wind -->
-				<div class="flex horizontal spaceS">
-					<div class="pill">
-						<img src="./images/icon-wind.svg" alt="wind" />
+	
+				<div class="col">
+					<!-- Sunrise -->
+					<div class="flex horizontal spaceS">
+						<div class="pill">
+							<img src="./images/icon-sunrise.svg" alt="sunrise" />
+						</div>
+						<div class="vertical details">
+							<h4 class="titleXS secondary">Sunrise</h4>
+							<h4 class="titleXS primary" id="sunrise"></h4>
+						</div>
 					</div>
-					<div class="vertical details">
-						<h4 class="titleXS secondary">Wind</h4>
-						<h4 class="titleXS primary" id="wind"></h4>
+	
+					<!-- Sunset -->
+					<div class="flex horizontal spaceS">
+						<div class="pill">
+							<img src="./images/icon-sunset.svg" alt="sunset" />
+						</div>
+						<div class="vertical details">
+							<h4 class="titleXS secondary">Sunset</h4>
+							<h4 class="titleXS primary" id="sunset"></h4>
+						</div>
 					</div>
 				</div>
-			</div>
-
-			<div class="airData">
-				<!-- Humidity -->
-				<div class="flex horizontal spaceS">
-					<div class="pill">
-						<img src="./images/icon-humidity.svg" alt="humidity" />
+	
+				<div class="col">
+					<!-- Cloud -->
+					<div class="flex horizontal spaceS">
+						<div class="pill">
+							<img src="./images/icon-cloud.svg" alt="cloud" />
+						</div>
+						<div class="vertical details">
+							<h4 class="titleXS secondary">Clouds</h4>
+							<h4 class="titleXS primary" id="clouds"></h4>
+						</div>
 					</div>
-					<div class="vertical details">
-						<h4 class="titleXS secondary">Humidity</h4>
-						<h4 class="titleXS primary" id="humidity"></h4>
+	
+					<!-- Wind -->
+					<div class="flex horizontal spaceS">
+						<div class="pill">
+							<img src="./images/icon-wind.svg" alt="wind" />
+						</div>
+						<div class="vertical details">
+							<h4 class="titleXS secondary">Wind</h4>
+							<h4 class="titleXS primary" id="wind"></h4>
+						</div>
 					</div>
 				</div>
-
-				<!-- Pressure -->
-				<div class="flex horizontal spaceS">
-					<div class="pill">
-						<img src="./images/icon-pressure.svg" alt="pressure" />
+	
+				<div class="col">
+					<!-- Humidity -->
+					<div class="flex horizontal spaceS">
+						<div class="pill">
+							<img src="./images/icon-humidity.svg" alt="humidity" />
+						</div>
+						<div class="vertical details">
+							<h4 class="titleXS secondary">Humidity</h4>
+							<h4 class="titleXS primary" id="humidity"></h4>
+						</div>
 					</div>
-					<div class="vertical details">
-						<h4 class="titleXS secondary">Pressure</h4>
-						<h4 class="titleXS primary" id="pressure"></h4>
+	
+					<!-- Pressure -->
+					<div class="flex horizontal spaceS">
+						<div class="pill">
+							<img src="./images/icon-pressure.svg" alt="pressure" />
+						</div>
+						<div class="vertical details">
+							<h4 class="titleXS secondary">Pressure</h4>
+							<h4 class="titleXS primary" id="pressure"></h4>
+						</div>
 					</div>
 				</div>
 			</div>
