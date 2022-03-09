@@ -109,12 +109,20 @@ span,
 	color: var(--main) !important;
 }
 
-.secondary {
-	color: var(--secondary);
+.icons {
+	fill: var(--secondary);
+}
+
+.icons-stroke {
+	stroke: var(--secondary)
 }
 
 .main {
 	color: var(--main);
+}
+
+.secondary {
+	color: var(--secondary);
 }
 
 .titleXL {
