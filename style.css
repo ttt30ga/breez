@@ -122,7 +122,7 @@ span,
 }
 
 .icons-stroke {
-	stroke: var(--secondary)
+	stroke: var(--secondary);
 }
 
 .main {
@@ -163,32 +163,28 @@ span,
 	font-family: 'Product-Sans-Regular';
 	font-style: normal;
 	font-weight: normal;
-	src: local('Product Sans Regular'),
-		url('./fonts/ProductSans-Regular.woff') format('woff');
+	src: local('Product Sans Regular'), url('./fonts/ProductSans-Regular.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'Product-Sans-Bold';
 	font-style: normal;
 	font-weight: normal;
-	src: local('Product Sans Bold'),
-		url('./fonts/ProductSans-Bold.woff') format('woff');
+	src: local('Product Sans Bold'), url('./fonts/ProductSans-Bold.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'Product-Sans-Medium-Regular';
 	font-style: normal;
 	font-weight: normal;
-	src: local('Product Sans Medium Regular'),
-		url('./fonts/ProductSans-Medium.woff') format('woff');
+	src: local('Product Sans Medium Regular'), url('./fonts/ProductSans-Medium.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'Product-Sans-Black-Regular';
 	font-style: normal;
 	font-weight: normal;
-	src: local('Product Sans Black Regular'),
-		url('./fonts/ProductSans-Black.woff') format('woff');
+	src: local('Product Sans Black Regular'), url('./fonts/ProductSans-Black.woff') format('woff');
 }
 
 /* X-Small devices (portrait phones, less than 576px) */
@@ -209,7 +205,10 @@ span,
 		-moz-text-align-last: center; /* For Firefox prior 58.0 */
 		text-align-last: center;
 	}
-	.titleXL, .titleL, .titleM, .titleS {
+	.titleXL,
+	.titleL,
+	.titleM,
+	.titleS {
 		text-align: center;
 	}
 	.titleXL {
@@ -224,20 +223,16 @@ span,
 
 /* Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
-	
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (max-width: 992px) {
-
 }
 
 /* X-Large devices (large desktops, 1200px and up) */
 @media (max-width: 1200px) {
-
 }
 
 /* XX-Large devices (larger desktops, 1400px and up) */
 @media (max-width: 1400px) {
-
 }
