@@ -15,6 +15,10 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+html {
+	font-size: 16px;
+}
+
 body {
 	background-color: var(--background) !important;
 }
@@ -45,6 +49,11 @@ body {
 
 .reverse {
 	flex-direction: row-reverse;
+}
+
+.temp {
+	-moz-text-align-last: right; /* For Firefox prior 58.0 */
+	text-align-last: right;
 }
 
 .pill {
@@ -93,9 +102,8 @@ span,
 
 .btn,
 .form-control {
-	border-radius: 12px !important;
+	border-radius: 16px !important;
 	padding: 12px 20px !important;
-	border: none !important;
 }
 
 .form-control {
@@ -181,4 +189,55 @@ span,
 	font-weight: normal;
 	src: local('Product Sans Black Regular'),
 		url('./fonts/ProductSans-Black.woff') format('woff');
+}
+
+/* X-Small devices (portrait phones, less than 576px) */
+/* No media query for `xs` since this is the default in Bootstrap */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+	.page {
+		margin: auto;
+		padding: 0 1.2em !important;
+	}
+	.content {
+		padding: 1em 0;
+	}
+	.temp {
+		margin-top: 0.1em;
+		margin-left: 13%;
+		-moz-text-align-last: center; /* For Firefox prior 58.0 */
+		text-align-last: center;
+	}
+	.titleXL, .titleL, .titleM, .titleS {
+		text-align: center;
+	}
+	.titleXL {
+		font-size: 8em !important;
+	}
+
+	.titleL {
+		font-size: 4em !important;
+		line-height: 100%;
+	}
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+	
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 992px) {
+
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (max-width: 1200px) {
+
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (max-width: 1400px) {
+
 }
