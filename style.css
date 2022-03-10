@@ -2,9 +2,10 @@
 	--accent: rgba(119, 206, 255, 1);
 	--action: rgba(39, 255, 164, 1);
 	--background: rgba(255, 254, 233, 1);
-	--gost: rgba(27, 43, 71, 0.05);
+	--gost: rgba(27, 43, 71, 0.04);
 	--main: rgba(34, 53, 86, 1);
 	--secondary: rgba(34, 53, 86, 0.3);
+	--tertiary: rgba(114, 129, 155, 1);
 }
 
 * {
@@ -51,7 +52,7 @@ body {
 	flex-direction: row-reverse;
 }
 
-.temp {
+.align-right {
 	-moz-text-align-last: right; /* For Firefox prior 58.0 */
 	text-align-last: right;
 }
@@ -65,15 +66,28 @@ body {
 	width: fit-content;
 }
 
+.details {
+	justify-content: space-between;
+}
+
 .details > h4 {
 	margin: 0.3em 2em 0.3em 0 !important;
 }
 
-.spaceS {
-	margin: 1em 0 0;
+.description {
+	height: 40px;
+	margin: 1em 0 1.4em;
 }
 
-/* Define text styles */
+.spaceS {
+	margin: 0.5em 0;
+}
+
+hr.divider {
+	border-top: 1px solid !important;
+	opacity: 0.1;
+}
+
 h1,
 h2,
 h3,
@@ -101,12 +115,18 @@ span,
 }
 
 .btn,
-.form-control {
+.form-control,
+.card {
 	border-radius: 16px !important;
+}
+
+.btn,
+.form-control {
 	padding: 12px 20px !important;
 }
 
-.form-control {
+.form-control,
+.card {
 	background-color: var(--gost) !important;
 	border: none !important;
 	color: var(--main) !important;
@@ -133,6 +153,10 @@ span,
 	color: var(--secondary);
 }
 
+.tertiary {
+	color: var(--tertiary);
+}
+
 .titleXL {
 	font-family: Product-Sans-Medium-Regular, Arial, Helvetica, sans-serif;
 	font-size: 10em !important;
@@ -156,6 +180,11 @@ span,
 
 .titleXS {
 	font-family: Product-Sans-Medium-Regular, Arial, Helvetica, sans-serif;
+	font-size: 1em !important;
+}
+
+.titleXS-regular {
+	font-family: Product-Sans-Regular, Arial, Helvetica, sans-serif;
 	font-size: 1em !important;
 }
 
