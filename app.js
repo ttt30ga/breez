@@ -80,18 +80,18 @@ const initApp = () => {
 	function populateDailyData(data) {
 		for (i = 0; i < 7; i++) {
 			let daily = data.daily[i];
-			let daily_description = daily.weather[0].description;
-			let daily_temp_min = daily.temp.min;
-			let daily_temp_max = daily.temp.max;
-			let daily_temp_morn = daily.temp.morn;
-			let daily_temp_day = daily.temp.day;
-			let daily_temp_eve = daily.temp.eve;
-			let daily_temp_night = daily.temp.night;
-			let daily_sunrise = daily.sunrise;
-			let daily_sunset = daily.sunset;
-			let daily_moonrise = daily.moonrise;
-			let daily_moonset = daily.moonset;
-			let daily_moon_phase = daily.moon_phase;
+			let dailyDescription = daily.weather[0].description;
+			let dailyTempMin = daily.temp.min;
+			let dailyTempMax = daily.temp.max;
+			let dailyTempMorn = daily.temp.morn;
+			let dailyTempDay = daily.temp.day;
+			let dailyTempEve = daily.temp.eve;
+			let dailyTempNight = daily.temp.night;
+			let dailySunrise = daily.sunrise;
+			let dailySunset = daily.sunset;
+			let dailyMoonrise = daily.moonrise;
+			let dailyMoonset = daily.moonset;
+			let dailyMoonPhase = daily.moon_phase;
 
 			document.getElementById('daily-weather').innerHTML = `
 			<div class="card col-lg-2 col-6">
@@ -108,38 +108,38 @@ const initApp = () => {
 						</svg>
 					</div>
 					<div class="description">
-						<h4 class="titleXS-regular tertiary">${daily_description}</h4>
+						<h4 class="titleXS-regular tertiary">${dailyDescription}</h4>
 					</div>
 					<div class="flex horizontal details spaceS">
 						<h3 class="titleXS secondary">Min</h3>
-						<h3 class="titleXS primary">${Math.round(daily_temp_min) + '°'}</h3>
+						<h3 class="titleXS primary">${Math.round(dailyTempMin) + '°'}</h3>
 					</div>
 					<div class="flex horizontal details spaceS">
 						<h3 class="titleXS secondary">Max</h3>
-						<h3 class="titleXS primary">${Math.round(daily_temp_max) + '°'}</h3>
+						<h3 class="titleXS primary">${Math.round(dailyTempMax) + '°'}</h3>
 					</div>
 					<hr class="divider" />
 					<div class="flex horizontal details spaceS">
 						<h3 class="titleXS secondary">Morning</h3>
-						<h3 class="titleXS primary">${Math.round(daily_temp_morn) + '°'}</h3>
+						<h3 class="titleXS primary">${Math.round(dailyTempMorn) + '°'}</h3>
 					</div>
 					<div class="flex horizontal details spaceS">
 						<h3 class="titleXS secondary">Day</h3>
-						<h3 class="titleXS primary">${Math.round(daily_temp_day) + '°'}</h3>
+						<h3 class="titleXS primary">${Math.round(dailyTempDay) + '°'}</h3>
 					</div>
 					<div class="flex horizontal details spaceS">
 						<h3 class="titleXS secondary">Evening</h3>
-						<h3 class="titleXS primary">${Math.round(daily_temp_eve) + '°'}</h3>
+						<h3 class="titleXS primary">${Math.round(dailyTempEve) + '°'}</h3>
 					</div>
 					<div class="flex horizontal details">
 						<h3 class="titleXS secondary">Night</h3>
-						<h3 class="titleXS primary">${Math.round(daily_temp_night) + '°'}</h3>
+						<h3 class="titleXS primary">${Math.round(dailyTempNight) + '°'}</h3>
 					</div>
 				</div>
 			</div>
 			`;
 
-			console.log(daily_temp_max);
+			console.log(daily);
 		}
 	}
 
@@ -147,8 +147,8 @@ const initApp = () => {
 		let location = data.name;
 		let description = data.weather[0].description;
 		let temp = data.main.temp;
-		let temp_min = data.main.temp_min;
-		let temp_max = data.main.temp_max;
+		let tempMin = data.main.temp_min;
+		let tempMax = data.main.temp_max;
 		let humidity = data.main.humidity;
 		let pressure = data.main.pressure;
 		let wind = data.wind.speed;
@@ -160,8 +160,8 @@ const initApp = () => {
 		document.getElementById('location').innerText = location;
 		document.getElementById('description').innerText = description;
 		document.getElementById('temp').innerText = Math.round(temp) + '°';
-		document.getElementById('temp_min').innerText = Math.round(temp_min) + '°';
-		document.getElementById('temp_max').innerText = Math.round(temp_max) + '°';
+		document.getElementById('tempMin').innerText = Math.round(tempMin) + '°';
+		document.getElementById('tempMax').innerText = Math.round(tempMax) + '°';
 		document.getElementById('clouds').innerText = clouds + '%';
 		document.getElementById('wind').innerText = wind + 'km/h';
 		document.getElementById('humidity').innerText = humidity + '%';
