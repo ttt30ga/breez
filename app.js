@@ -62,7 +62,7 @@ const initApp = () => {
 
 	function populateData(data) {
 		document.getElementById('date').innerText = month + ', ' + day + ' ' + date.getDate();
-		document.getElementById('location').innerText = data.timezone;
+		document.getElementById('location').innerText = data.timezone.split('/').pop();
 		document.getElementById('description').innerText = data.current.weather[0].description;
 		document.getElementById('temp').innerText = Math.round(data.current.temp) + '°';
 		document.getElementById('tempMin').innerText = Math.round(data.daily[0].temp.min) + '°';
@@ -77,7 +77,7 @@ const initApp = () => {
 			new Date(data.current.sunset * 1000).getHours() + ':' + new Date(data.current.sunset * 1000).getMinutes();
 
 		data.daily
-			.slice(1) // This skip the 1 entry which is the current day
+			.slice(1) // This skip the 1st entry which is the current day
 			.map((data) => {
 				let date = new Date(data.dt * 1000);
 				const list = document.createElement('div');
@@ -87,11 +87,11 @@ const initApp = () => {
 				<div class="card-body">
 					<div class="flex horizontal details">
 						<h5 class="titleS">${DAYS_SHORT[date.getDay()] + ' ' + date.getDate()}</h5>
-						<svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path
 								fill-rule="evenodd"
 								clip-rule="evenodd"
-								d="M8.0033 0.972089C9.66184 0.269133 11.5 1.48649 11.5 3.28785C11.5 4.67695 10.3739 5.80303 8.98482 5.80303L3 5.80303C2.44772 5.80303 2 5.35532 2 4.80303C2 4.25075 2.44772 3.80303 3 3.80303L8.98482 3.80303C9.26935 3.80303 9.5 3.57238 9.5 3.28785C9.5 2.91888 9.12349 2.66953 8.78378 2.81352L8.60236 2.89041C8.09386 3.10593 7.50693 2.86843 7.29141 2.35993C7.07588 1.85144 7.31339 1.2645 7.82188 1.04898L8.0033 0.972089ZM13.32 4.26581C14.5188 3.06697 16.4274 2.96126 17.7513 4.02038C18.5426 4.65343 19 5.61604 19 6.6242C19 8.47544 17.5005 10 15.6361 10L1.5 10C0.947715 10 0.5 9.55228 0.5 9C0.5 8.44772 0.947715 8 1.5 8L15.6361 8C16.3828 8 17 7.384 17 6.6242C17 6.21837 16.8147 5.83237 16.5019 5.58212C15.9738 5.15963 15.2124 5.20179 14.7342 5.68002L14.2071 6.20711C13.8166 6.59763 13.1834 6.59763 12.7929 6.20711C12.4024 5.81658 12.4024 5.18342 12.7929 4.79289L13.32 4.26581ZM5 12C4.44772 12 4 12.4477 4 13C4 13.5523 4.44772 14 5 14L13 14C13.5523 14 14 13.5523 14 13C14 12.4477 13.5523 12 13 12L5 12Z"
+								d="M10.0033 5.97211C11.6618 5.26915 13.5 6.48651 13.5 8.28787C13.5 9.67697 12.3739 10.803 10.9848 10.803L5 10.803C4.44772 10.803 4 10.3553 4 9.80305C4 9.25076 4.44772 8.80305 5 8.80305L10.9848 8.80305C11.2693 8.80305 11.5 8.5724 11.5 8.28787C11.5 7.9189 11.1235 7.66955 10.7838 7.81354L10.6024 7.89043C10.0939 8.10595 9.50693 7.86845 9.29141 7.35995C9.07588 6.85146 9.31339 6.26452 9.82188 6.049L10.0033 5.97211ZM15.32 9.26583C16.5188 8.06699 18.4274 7.96128 19.7513 9.0204C20.5426 9.65345 21 10.6161 21 11.6242C21 13.4755 19.5005 15 17.6361 15L3.5 15C2.94772 15 2.5 14.5523 2.5 14C2.5 13.4477 2.94772 13 3.5 13L17.6361 13C18.3828 13 19 12.384 19 11.6242C19 11.2184 18.8147 10.8324 18.5019 10.5821C17.9738 10.1596 17.2124 10.2018 16.7342 10.68L16.2071 11.2071C15.8166 11.5977 15.1834 11.5977 14.7929 11.2071C14.4024 10.8166 14.4024 10.1834 14.7929 9.79291L15.32 9.26583ZM7 17C6.44772 17 6 17.4477 6 18C6 18.5523 6.44772 19 7 19H15C15.5523 19 16 18.5523 16 18C16 17.4477 15.5523 17 15 17H7Z"
 								class="icons"
 							/>
 						</svg>

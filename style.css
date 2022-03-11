@@ -64,7 +64,7 @@ body {
 
 .pill {
 	background-color: var(--color-gost);
-	border-radius: 40px;
+	border-radius: 1.6rem;
 	padding: 1.4rem;
 	margin-right: 0.8rem;
 	/* width: -moz-fit-content;
@@ -97,6 +97,14 @@ body {
 
 .space8 {
 	margin: 0.8rem 0;
+}
+
+.space12 {
+	margin: 1.2rem 0;
+}
+
+.space16 {
+	margin: 1.6rem 0;
 }
 
 .space20 {
