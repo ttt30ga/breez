@@ -61,6 +61,7 @@ const initApp = () => {
 	getGeolocation();
 
 	function populateData(data) {
+		// Current Data
 		document.getElementById('date').innerText = month + ', ' + day + ' ' + date.getDate();
 		document.getElementById('location').innerText = data.timezone.split('/').pop();
 		document.getElementById('description').innerText = capitaliseString(data.current.weather[0].description);
@@ -69,13 +70,18 @@ const initApp = () => {
 		document.getElementById('tempMax').innerText = Math.round(data.daily[0].temp.max) + '°';
 		document.getElementById('clouds').innerText = data.current.clouds + '%';
 		document.getElementById('wind').innerText = data.current.wind_speed + ' km/h';
+		document.getElementById('windDeg').innerText = data.current.wind_deg;
 		document.getElementById('humidity').innerText = data.current.humidity + '%';
-		document.getElementById('pressure').innerText = data.current.pressure;
+		document.getElementById('pressure').innerText = data.current.pressure + ' hPa';
+		document.getElementById('visibility').innerText = data.current.visibility / 1000 + ' km';
+		document.getElementById('dewPoint').innerText = Math.round(data.current.dew_point) + '°';
+		document.getElementById('uvi').innerText = data.current.uvi;
 		document.getElementById('sunrise').innerText =
 			new Date(data.current.sunrise * 1000).getHours() + ':' + new Date(data.current.sunrise * 1000).getMinutes();
 		document.getElementById('sunset').innerText =
 			new Date(data.current.sunset * 1000).getHours() + ':' + new Date(data.current.sunset * 1000).getMinutes();
 
+		// 7 Days Forecast
 		data.daily
 			.slice(1) // This skip the 1st entry which is the current day
 			.map((data) => {
