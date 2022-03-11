@@ -12,9 +12,12 @@
 	font-size: 62.5%; /* (62.5/100) * 16px = 10px */
 	--font--sizeXL: 16rem; /* 160px */
 	--font--sizeL: 8rem; /* 80px */
-	--font--sizeM: 3.2rem; /* 32px */
+	--font--sizeM: 2.8rem; /* 28px */
 	--font--sizeS: 2rem; /* 20px */
 	--font--sizeXS: 1.6rem; /* 16px */
+
+	/* Border Radius */
+	--border-radius: 1.6rem;
 }
 
 * {
@@ -64,7 +67,7 @@ body {
 
 .pill {
 	background-color: var(--color-gost);
-	border-radius: 1.6rem;
+	border-radius: var(--border-radius);
 	padding: 1.4rem;
 	margin-right: 0.8rem;
 	/* width: -moz-fit-content;
@@ -145,7 +148,7 @@ span,
 .btn,
 .form-control,
 .card {
-	border-radius: 1.6rem !important;
+	border-radius: var(--border-radius) !important;
 }
 
 .btn,
