@@ -1,11 +1,20 @@
 :root {
-	--accent: rgba(119, 206, 255, 1);
-	--action: rgba(39, 255, 164, 1);
-	--background: rgba(255, 254, 233, 1);
-	--gost: rgba(27, 43, 71, 0.04);
-	--main: rgba(34, 53, 86, 1);
-	--secondary: rgba(34, 53, 86, 0.3);
-	--tertiary: rgba(114, 129, 155, 1);
+	/* Colors */
+	--color-accent: rgba(119, 206, 255, 1);
+	--color-action: rgba(39, 255, 164, 1);
+	--color-background: rgba(255, 254, 233, 1);
+	--color-gost: rgba(27, 43, 71, 0.04);
+	--color-main: rgba(34, 53, 86, 1);
+	--color-secondary: rgba(34, 53, 86, 0.3);
+	--color-tertiary: rgba(114, 129, 155, 1);
+
+	/* Font Sizes */
+	font-size: 62.5%; /* (62.5/100) * 16px = 10px */
+	--font--sizeXL: 16rem; /* 160px */
+	--font--sizeL: 8rem; /* 80px */
+	--font--sizeM: 3.2rem; /* 32px */
+	--font--sizeS: 2rem; /* 20px */
+	--font--sizeXS: 1.6rem; /* 16px */
 }
 
 * {
@@ -16,12 +25,8 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-html {
-	font-size: 16px;
-}
-
 body {
-	background-color: var(--background) !important;
+	background-color: var(--color-background) !important;
 }
 
 .page {
@@ -58,12 +63,16 @@ body {
 }
 
 .pill {
-	background-color: var(--gost);
+	background-color: var(--color-gost);
 	border-radius: 40px;
-	padding: 1em;
-	margin-right: 0.8em;
+	padding: 1.4rem;
+	margin-right: 0.8rem;
 	width: -moz-fit-content;
 	width: fit-content;
+}
+
+.card-body {
+	padding: 1.6rem !important;
 }
 
 .details {
@@ -71,16 +80,20 @@ body {
 }
 
 .details > h4 {
-	margin: 0.3em 2em 0.3em 0 !important;
+	margin: 0.6rem 2rem 0.6rem 0 !important;
 }
 
 .description {
 	height: 40px;
-	margin: 1em 0 1.4em;
+	margin: 1rem 0 1.4rem;
 }
 
-.spaceS {
-	margin: 0.5em 0;
+.space8 {
+	margin: 0.8rem 0;
+}
+
+.space20 {
+	margin: 2rem 0;
 }
 
 hr.divider {
@@ -102,11 +115,11 @@ span,
 	padding-top: 0 !important;
 	padding-bottom: 0 !important;
 	margin-bottom: 0 !important;
-	color: var(--main);
+	color: var(--color-main);
 }
 
 .navbar {
-	padding: 2em 0 !important;
+	padding: 2rem 0 !important;
 }
 
 .container-fluid {
@@ -117,75 +130,75 @@ span,
 .btn,
 .form-control,
 .card {
-	border-radius: 16px !important;
+	border-radius: 1.6rem !important;
 }
 
 .btn,
 .form-control {
-	padding: 12px 20px !important;
+	padding: 1.2rem 2rem !important;
 }
 
 .form-control,
 .card {
-	background-color: var(--gost) !important;
+	background-color: var(--color-gost) !important;
 	border: none !important;
-	color: var(--main) !important;
+	color: var(--color-main) !important;
 }
 
 .btn {
-	background: var(--action) !important;
-	color: var(--main) !important;
+	background: var(--color-action) !important;
+	color: var(--color-main) !important;
 }
 
 .icons {
-	fill: var(--secondary);
+	fill: var(--color-secondary);
 }
 
 .icons-stroke {
-	stroke: var(--secondary);
+	stroke: var(--color-secondary);
 }
 
 .main {
-	color: var(--main);
+	color: var(--color-main);
 }
 
 .secondary {
-	color: var(--secondary);
+	color: var(--color-secondary);
 }
 
 .tertiary {
-	color: var(--tertiary);
+	color: var(--color-tertiary);
 }
 
 .titleXL {
 	font-family: Product-Sans-Medium-Regular, Arial, Helvetica, sans-serif;
-	font-size: 10em !important;
+	font-size: var(--font--sizeXL) !important;
 	line-height: 1em;
 }
 
 .titleL {
 	font-family: Product-Sans-Bold, Arial, Helvetica, sans-serif;
-	font-size: 5em !important;
+	font-size: var(--font--sizeL) !important;
 }
 
 .titleM {
 	font-family: Product-Sans-Bold, Arial, Helvetica, sans-serif;
-	font-size: 1.8em !important;
+	font-size: var(--font--sizeM) !important;
 }
 
 .titleS {
 	font-family: Product-Sans-Medium-Regular, Arial, Helvetica, sans-serif;
-	font-size: 1.4em !important;
+	font-size: var(--font--sizeS) !important;
 }
 
 .titleXS {
 	font-family: Product-Sans-Medium-Regular, Arial, Helvetica, sans-serif;
-	font-size: 1em !important;
+	font-size: var(--font--sizeXS) !important;
 }
 
 .titleXS-regular {
 	font-family: Product-Sans-Regular, Arial, Helvetica, sans-serif;
-	font-size: 1em !important;
+	font-size: var(--font--sizeXS) !important;
 }
 
 @font-face {
@@ -223,14 +236,13 @@ span,
 @media (max-width: 576px) {
 	.page {
 		margin: auto;
-		padding: 0 1.2em !important;
+		padding: 0 1.2rem !important;
 	}
 	.content {
-		padding: 1em 0;
+		padding: 2rem 0;
 	}
-	.temp {
-		margin-top: 0.1em;
-		margin-left: 13%;
+	.align-right {
+		margin-left: 10%;
 		-moz-text-align-last: center; /* For Firefox prior 58.0 */
 		text-align-last: center;
 	}
@@ -241,12 +253,14 @@ span,
 		text-align: center;
 	}
 	.titleXL {
-		font-size: 8em !important;
+		font-size: 12rem !important;
+	}
+	.titleL {
+		font-size: 5rem !important;
 	}
 
-	.titleL {
-		font-size: 4em !important;
-		line-height: 100%;
+	.titleM {
+		font-size: 2.8rem !important;
 	}
 }
 
