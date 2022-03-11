@@ -63,7 +63,7 @@ const initApp = () => {
 	function populateData(data) {
 		document.getElementById('date').innerText = month + ', ' + day + ' ' + date.getDate();
 		document.getElementById('location').innerText = data.timezone.split('/').pop();
-		document.getElementById('description').innerText = data.current.weather[0].description;
+		document.getElementById('description').innerText = capitaliseString(data.current.weather[0].description);
 		document.getElementById('temp').innerText = Math.round(data.current.temp) + '°';
 		document.getElementById('tempMin').innerText = Math.round(data.daily[0].temp.min) + '°';
 		document.getElementById('tempMax').innerText = Math.round(data.daily[0].temp.max) + '°';
@@ -97,7 +97,7 @@ const initApp = () => {
 						</svg>
 					</div>
 					<div class="description">
-						<h4 class="titleXS-regular tertiary">${data.weather[0].description}</h4>
+						<h4 class="titleXS-regular tertiary">${capitaliseString(data.weather[0].description)}</h4>
 					</div>
 					<div class="flex horizontal details space8">
 						<h3 class="titleXS secondary">Min</h3>
@@ -112,6 +112,10 @@ const initApp = () => {
 				document.getElementById('daily-weather').appendChild(list);
 			})
 			.join('');
+	}
+
+	function capitaliseString(word) {
+		return word.charAt(0).toUpperCase() + word.slice(1);
 	}
 
 	// const search = () => {
