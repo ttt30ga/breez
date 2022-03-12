@@ -37,7 +37,8 @@ const initApp = () => {
 					};
 
 					getWeatherData().then((data) => {
-						populateData(data);
+						populateCurrentData(data);
+						populateForecastData(data);
 					});
 				},
 				(error) => {
@@ -62,8 +63,7 @@ const initApp = () => {
 
 	getGeolocation();
 
-	function populateData(data) {
-		// Current Data
+	function populateCurrentData(data) {
 		document.getElementById('date').innerText = month + ', ' + day + ' ' + date.getDate();
 		document.getElementById('location').innerText = data.timezone.split('/').pop();
 		document.getElementById('description').innerText = capitaliseString(data.current.weather[0].description);
@@ -82,8 +82,9 @@ const initApp = () => {
 			new Date(data.current.sunrise * 1000).getHours() + ':' + new Date(data.current.sunrise * 1000).getMinutes();
 		document.getElementById('sunset').innerText =
 			new Date(data.current.sunset * 1000).getHours() + ':' + new Date(data.current.sunset * 1000).getMinutes();
+	}
 
-		// 7 Days Forecast
+	function populateForecastData(data) {
 		data.daily
 			.slice(1) // This skip the 1st entry which is the current day
 			.map((data) => {
