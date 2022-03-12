@@ -1,3 +1,5 @@
+import * as icon from './icons.js';
+
 document.addEventListener('readystatechange', (event) => {
 	if (event.target.readyState === 'complete') {
 		initApp();
@@ -93,14 +95,7 @@ const initApp = () => {
 				<div class="card-body">
 					<div class="flex horizontal details">
 						<h5 class="titleS">${DAYS_SHORT[date.getDay()] + ' ' + date.getDate()}</h5>
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path
-								fill-rule="evenodd"
-								clip-rule="evenodd"
-								d="M10.0033 5.97211C11.6618 5.26915 13.5 6.48651 13.5 8.28787C13.5 9.67697 12.3739 10.803 10.9848 10.803L5 10.803C4.44772 10.803 4 10.3553 4 9.80305C4 9.25076 4.44772 8.80305 5 8.80305L10.9848 8.80305C11.2693 8.80305 11.5 8.5724 11.5 8.28787C11.5 7.9189 11.1235 7.66955 10.7838 7.81354L10.6024 7.89043C10.0939 8.10595 9.50693 7.86845 9.29141 7.35995C9.07588 6.85146 9.31339 6.26452 9.82188 6.049L10.0033 5.97211ZM15.32 9.26583C16.5188 8.06699 18.4274 7.96128 19.7513 9.0204C20.5426 9.65345 21 10.6161 21 11.6242C21 13.4755 19.5005 15 17.6361 15L3.5 15C2.94772 15 2.5 14.5523 2.5 14C2.5 13.4477 2.94772 13 3.5 13L17.6361 13C18.3828 13 19 12.384 19 11.6242C19 11.2184 18.8147 10.8324 18.5019 10.5821C17.9738 10.1596 17.2124 10.2018 16.7342 10.68L16.2071 11.2071C15.8166 11.5977 15.1834 11.5977 14.7929 11.2071C14.4024 10.8166 14.4024 10.1834 14.7929 9.79291L15.32 9.26583ZM7 17C6.44772 17 6 17.4477 6 18C6 18.5523 6.44772 19 7 19H15C15.5523 19 16 18.5523 16 18C16 17.4477 15.5523 17 15 17H7Z"
-								class="icons"
-							/>
-						</svg>
+						${populateIcon(data.weather[0].id)}
 					</div>
 					<div class="description">
 						<h4 class="titleXS-regular tertiary">${capitaliseString(data.weather[0].description)}</h4>
@@ -118,6 +113,32 @@ const initApp = () => {
 				document.getElementById('daily-weather').appendChild(list);
 			})
 			.join('');
+	}
+
+	function populateIcon(id) {
+		if (id >= 200 && id <= 232) {
+			return icon.thunderstorm;
+		} else if (id >= 300 && id <= 321) {
+			return icon.showerRain;
+		} else if (id >= 500 && id <= 504) {
+			return icon.rain;
+		} else if (id == 511) {
+			return icon.snow;
+		} else if (id >= 520 && id <= 531) {
+			return icon.showerRain;
+		} else if (id >= 600 && id <= 622) {
+			return icon.snow;
+		} else if (id >= 700 && id <= 781) {
+			return icon.showerRain;
+		} else if (id == 800) {
+			return icon.sun;
+		} else if (id == 801) {
+			return icon.fewClouds;
+		} else if (id == 802) {
+			return icon.scatteredClouds;
+		} else if (id == 803 || id == 804) {
+			return icon.brokenClouds;
+		}
 	}
 
 	function capitaliseString(word) {
