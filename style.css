@@ -20,6 +20,11 @@
 	--border-radius: 1.6rem;
 }
 
+.row {
+	--bs-gutter-x: 0 !important;
+	--bs-gutter-y: 0;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -32,14 +37,17 @@ body {
 	background-color: var(--color-background) !important;
 }
 
+section {
+	margin: 0 0 2rem;
+}
+
 .page {
-	max-width: 1400px !important;
+	max-width: 1200px !important;
 	margin: auto;
-	padding: 0 4rem !important;
 }
 
 .content {
-	padding: 2rem 0;
+	padding: 2rem 2rem;
 }
 
 .flex {
@@ -69,7 +77,6 @@ body {
 	background-color: var(--color-gost);
 	border-radius: var(--border-radius);
 	padding: 1.2rem;
-	margin-right: 0.8rem;
 	/* width: -moz-fit-content;
 	width: fit-content; */
 }
@@ -89,8 +96,30 @@ body {
 	min-width: 14rem !important;
 }
 
+.card,
+.hourly {
+	margin: 0 0.4rem;
+}
+
 .card-body {
 	padding: 1.6rem !important;
+}
+
+.scrolling-wrapper {
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
+	-webkit-overflow-scrolling: touch;
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+	/* .card {
+    display: inline-block;
+  } */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrolling-wrapper::-webkit-scrollbar {
+	display: none;
 }
 
 .description {
@@ -105,7 +134,7 @@ body {
 }
 
 .details > h4 {
-	margin: 0.6rem 2rem 0.6rem 0 !important;
+	margin: 0.4rem 0.8rem !important;
 }
 
 .space8 {
@@ -264,10 +293,15 @@ span,
 @media (max-width: 576px) {
 	.page {
 		margin: auto;
-		padding: 0 1.2rem !important;
+	}
+	.content:first-child {
+		margin-bottom: 0;
 	}
 	.content {
-		padding: 2rem 0;
+		padding: 2rem 2rem;
+	}
+	.hourly {
+		padding-right: 1rem;
 	}
 	.align-right {
 		margin-left: 10%;
