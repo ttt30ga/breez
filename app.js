@@ -26,6 +26,7 @@ const initApp = () => {
 					let lon = position.coords.longitude;
 
 					getWeatherData(lat, lon).then((data) => {
+						document.getElementById('hourly-weather').innerHTML = '';
 						document.getElementById('daily-weather').innerHTML = '';
 						populateCurrentData(data);
 						populateForecastData(data);
@@ -73,6 +74,7 @@ const initApp = () => {
 			let lat = data[0].lat;
 			let lon = data[0].lon;
 			getWeatherData(lat, lon).then((data) => {
+				document.getElementById('hourly-weather').innerHTML = '';
 				document.getElementById('daily-weather').innerHTML = '';
 				populateCurrentData(data);
 				populateForecastData(data);
@@ -135,14 +137,29 @@ const initApp = () => {
 	}
 
 	function populateForecastData(data) {
+		data.hourly
+			.slice(0, 25) // This
+			.map((data) => {
+				let date = new Date(data.dt * 1000);
+				const hourlyList = document.createElement('div');
+
+				hourlyList.innerHTML = `
+				<div class="flex vertical hourly details">
+					${populateIcon(data.weather[0].id)}
+					<h5 class="titleXS secondary">${date.getHours()}</h5>
+				</div>
+				`;
+				document.getElementById('hourly-weather').appendChild(hourlyList);
+			});
+
 		data.daily
 			.slice(1) // This skip the 1st entry which is the current day
 			.map((data) => {
 				let date = new Date(data.dt * 1000);
-				const list = document.createElement('div');
-				list.classList.add('card');
+				const dailyList = document.createElement('div');
+				dailyList.classList.add('card');
 
-				list.innerHTML = `
+				dailyList.innerHTML = `
 				<div class="card-body">
 					<div class="flex horizontal details">
 						<h5 class="titleS">${DAYS_SHORT[date.getDay()] + ' ' + date.getDate()}</h5>
@@ -161,7 +178,7 @@ const initApp = () => {
 					</div>
 				</div>
 				`;
-				document.getElementById('daily-weather').appendChild(list);
+				document.getElementById('daily-weather').appendChild(dailyList);
 			})
 			.join('');
 	}

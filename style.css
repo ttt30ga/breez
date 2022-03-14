@@ -33,13 +33,13 @@ body {
 }
 
 .page {
-	max-width: 1200px !important;
+	max-width: 1400px !important;
 	margin: auto;
-	padding: 0 2em !important;
+	padding: 0 4rem !important;
 }
 
 .content {
-	padding: 2em 0;
+	padding: 2rem 0;
 }
 
 .flex {
@@ -68,10 +68,20 @@ body {
 .pill {
 	background-color: var(--color-gost);
 	border-radius: var(--border-radius);
-	padding: 1.4rem;
+	padding: 1.2rem;
 	margin-right: 0.8rem;
 	/* width: -moz-fit-content;
 	width: fit-content; */
+}
+
+.hourly,
+#hourly-weather {
+	align-items: center;
+	justify-content: space-between;
+}
+
+.hourly > svg {
+	margin: 0 0 1rem;
 }
 
 .card,
