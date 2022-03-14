@@ -19,11 +19,11 @@
 						<img src="./images/logo.svg" alt="" width="120" />
 					</a>
 					<!-- Search -->
-					<form class="d-flex" name="search">
+					<form class="d-flex" name="search" id="searchForm">
 						<div class="input-group">
 							<input id="search" class="form-control me-2 titleXS" type="search" placeholder="City" aria-label="Search" />
 						</div>
-						<button class="btn titleXS" type="submit" id="go" onclick="search();">Go!</button>
+						<button class="btn titleXS" type="submit" id="go">Go!</button>
 					</form>
 				</div>
 			</nav>
@@ -274,10 +274,13 @@
 					</div>
 				</div>
 			</div>
+		</section>
 
-			<!-- Daily -->
+		<!-- Forecast -->
+		<section class="container-fluid">
 			<div class="flex horizontal content" id="daily-weather"></div>
 		</section>
+
 		<script type="module" src="app.js"></script>
 	</body>
 </html>

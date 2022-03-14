@@ -25,20 +25,11 @@ const initApp = () => {
 					let lat = position.coords.latitude;
 					let lon = position.coords.longitude;
 
-					const getWeatherData = async () => {
-						try {
-							const weather = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&units=metric&appid=${API_KEY}`;
-							const response = await fetch(weather);
-							const data = await response.json();
-							return data;
-						} catch (err) {
-							console.log(err);
-						}
-					};
-
-					getWeatherData().then((data) => {
+					getWeatherData(lat, lon).then((data) => {
+						document.getElementById('daily-weather').innerHTML = '';
 						populateCurrentData(data);
 						populateForecastData(data);
+						getReverseGeocodingData(lat, lon);
 					});
 				},
 				(error) => {
@@ -63,25 +54,84 @@ const initApp = () => {
 
 	getGeolocation();
 
-	function populateCurrentData(data) {
-		document.getElementById('date').innerText = month + ', ' + day + ' ' + date.getDate();
-		document.getElementById('location').innerText = data.timezone.split('/').pop();
-		document.getElementById('description').innerText = capitaliseString(data.current.weather[0].description);
-		document.getElementById('temp').innerText = Math.round(data.current.temp) + '°';
-		document.getElementById('tempMin').innerText = Math.round(data.daily[0].temp.min) + '°';
-		document.getElementById('tempMax').innerText = Math.round(data.daily[0].temp.max) + '°';
-		document.getElementById('clouds').innerText = data.current.clouds + '%';
-		document.getElementById('wind').innerText = data.current.wind_speed + ' km/h';
-		document.getElementById('windDeg').innerText = data.current.wind_deg;
-		document.getElementById('humidity').innerText = data.current.humidity + '%';
-		document.getElementById('pressure').innerText = data.current.pressure + ' hPa';
-		document.getElementById('visibility').innerText = data.current.visibility / 1000 + ' km';
-		document.getElementById('dewPoint').innerText = Math.round(data.current.dew_point) + '°';
-		document.getElementById('uvi').innerText = data.current.uvi;
-		document.getElementById('sunrise').innerText =
-			new Date(data.current.sunrise * 1000).getHours() + ':' + new Date(data.current.sunrise * 1000).getMinutes();
-		document.getElementById('sunset').innerText =
-			new Date(data.current.sunset * 1000).getHours() + ':' + new Date(data.current.sunset * 1000).getMinutes();
+	const getWeatherData = async (lat, lon) => {
+		try {
+			const weather = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`;
+			const response = await fetch(weather);
+			const data = await response.json();
+			return data;
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	const getDirectGeocodingData = async (city) => {
+		try {
+			const location = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${API_KEY}`;
+			const response = await fetch(location);
+			const data = await response.json();
+			let lat = data[0].lat;
+			let lon = data[0].lon;
+			getWeatherData(lat, lon).then((data) => {
+				document.getElementById('daily-weather').innerHTML = '';
+				populateCurrentData(data);
+				populateForecastData(data);
+				getReverseGeocodingData(lat, lon);
+			});
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	const getReverseGeocodingData = async (lat, lon) => {
+		try {
+			const location = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+			const response = await fetch(location);
+			const data = await response.json();
+			let cityName = data[0].name;
+			getWeatherData(lat, lon, cityName).then((data) => {
+				populateCurrentData(data, cityName);
+			});
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	// Search
+	let searchForm = document.getElementById('searchForm');
+	let search = document.getElementById('search');
+
+	searchForm.addEventListener('submit', (e) => {
+		e.preventDefault();
+		const city = search.value;
+
+		if (city) {
+			getDirectGeocodingData(city);
+			search.value = '';
+		}
+	});
+
+	function populateCurrentData(data, cityName) {
+		if (cityName) {
+			document.getElementById('date').innerText = month + ', ' + day + ' ' + date.getDate();
+			document.getElementById('location').innerText = cityName;
+			document.getElementById('description').innerText = capitaliseString(data.current.weather[0].description);
+			document.getElementById('temp').innerText = Math.round(data.current.temp) + '°';
+			document.getElementById('tempMin').innerText = Math.round(data.daily[0].temp.min) + '°';
+			document.getElementById('tempMax').innerText = Math.round(data.daily[0].temp.max) + '°';
+			document.getElementById('clouds').innerText = data.current.clouds + '%';
+			document.getElementById('wind').innerText = data.current.wind_speed + ' km/h';
+			document.getElementById('windDeg').innerText = data.current.wind_deg;
+			document.getElementById('humidity').innerText = data.current.humidity + '%';
+			document.getElementById('pressure').innerText = data.current.pressure + ' hPa';
+			document.getElementById('visibility').innerText = data.current.visibility / 1000 + ' km';
+			document.getElementById('dewPoint').innerText = Math.round(data.current.dew_point) + '°';
+			document.getElementById('uvi').innerText = data.current.uvi;
+			document.getElementById('sunrise').innerText =
+				new Date(data.current.sunrise * 1000).getHours() + ':' + new Date(data.current.sunrise * 1000).getMinutes();
+			document.getElementById('sunset').innerText =
+				new Date(data.current.sunset * 1000).getHours() + ':' + new Date(data.current.sunset * 1000).getMinutes();
+		}
 	}
 
 	function populateForecastData(data) {
@@ -145,14 +195,4 @@ const initApp = () => {
 	function capitaliseString(word) {
 		return word.charAt(0).toUpperCase() + word.slice(1);
 	}
-
-	// const search = () => {
-	// 	document.getElementById('go').addEventListener('click', () => {
-	// 		let value = document.getElementById('search').value;
-	// 		console.log(value);
-	// 		return value;
-	// 	});
-	// };
-
-	// search();
 };
