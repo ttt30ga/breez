@@ -1,12 +1,12 @@
 :root {
 	/* Colors */
-	--color-accent: rgba(119, 206, 255, 1);
-	--color-action: rgba(39, 255, 164, 1);
-	--color-background: rgba(255, 254, 233, 1);
-	--color-gost: rgba(27, 43, 71, 0.04);
-	--color-main: rgba(34, 53, 86, 1);
-	--color-secondary: rgba(34, 53, 86, 0.3);
-	--color-tertiary: rgba(114, 129, 155, 1);
+	--color-accent: rgba(119, 205, 255, 1);
+	--color-action: rgba(39, 255, 165, 1);
+	--color-background: rgba(255, 250, 235, 1);
+	--color-gost: rgba(25, 40, 70, 0.04);
+	--color-main: rgba(35, 50, 85, 1);
+	--color-secondary: rgba(35, 50, 85, 0.3);
+	--color-tertiary: rgba(115, 129, 155, 1);
 
 	/* Font Sizes */
 	font-size: 62.5%; /* (62.5/100) * 16px = 10px */

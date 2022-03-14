@@ -39,7 +39,7 @@ const rain = `
 
 const thunderstorm = `
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M9 20.5L11.5 12.8909H8L10.5 3.5H16.5L14.0002 9.10909H18.0002L9 20.5Z" fill="#FFC634"/>
+        <path d="M8.23072 22L10 14H5L15.7691 2L14 10H19L8.23072 22Z" fill="#FFC634"/>
     </svg>
 `;
 
