@@ -127,6 +127,7 @@ const initApp = () => {
 		if (cityName) {
 			let dateSunrise = new Date(data.current.sunrise * 1000);
 			let dateSunset = new Date(data.current.sunset * 1000);
+			document.querySelector('title').innerText = cityName + ' ' + Math.round(data.current.temp) + '°';
 			document.getElementById('date').innerText = month + ', ' + day + ' ' + date.getDate();
 			document.getElementById('location').innerText = cityName;
 			document.getElementById('description').innerText = capitaliseString(data.current.weather[0].description);
