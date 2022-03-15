@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./images/logo.svg">
+  <img src="./images/logo.svg" width="300px">
 </p>
 
 <p align="center">A web-based weather app</p>
@@ -8,7 +8,11 @@
 
 ## About
 
-Breez is a weather app for the web using data from the [OpenWeather API](https://openweathermap.org/api).
+Breez is a weather app for the web made with plain HTML, CSS and Javascript
+
+## Data
+
+Breez uses data from the [OpenWeather API](https://openweathermap.org/api).
 
 ## Features
 
