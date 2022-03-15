@@ -24,14 +24,17 @@ const initApp = () => {
 					let lat = position.coords.latitude;
 					let lon = position.coords.longitude;
 
-					getWeatherData(lat, lon).then((data) => {
-						document.getElementById('hourly-weather').innerHTML = '';
-						document.getElementById('daily-weather').innerHTML = '';
-						populateCurrentData(data);
-						populateForecastData(data);
-						populateAirQualityData(lat, lon);
-						getReverseGeocodingData(lat, lon);
-					});
+					getData(lat, lon)
+						.then(([weatherData, airData, geoReverseData]) => {
+							document.getElementById('hourly-weather').innerHTML = '';
+							document.getElementById('daily-weather').innerHTML = '';
+							populateCurrentData(weatherData, geoReverseData[0].name);
+							populateForecastData(weatherData);
+							populateAirQualityData(airData);
+						})
+						.catch((error) => {
+							console.log(error);
+						});
 				},
 				(error) => {
 					switch (error.code) {
@@ -55,59 +58,36 @@ const initApp = () => {
 
 	getGeolocation();
 
-	const getWeatherData = async (lat, lon) => {
-		try {
-			const weather = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`;
-			const response = await fetch(weather);
-			const data = await response.json();
-			return data;
-		} catch (err) {
-			console.log(err);
-		}
+	const getData = async (lat, lon) => {
+		const weather = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`;
+		const air = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+		const geoReverse = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+		const [weatherResponse, airResponse, geoReverseResponse] = await Promise.all([fetch(weather), fetch(air), fetch(geoReverse)]);
+
+		const weatherData = await weatherResponse.json();
+		const airData = await airResponse.json();
+		const geoReverseData = await geoReverseResponse.json();
+
+		return [weatherData, airData, geoReverseData];
 	};
 
-	const getAirQualityData = async (lat, lon) => {
+	const getGeoDirectData = async (city) => {
 		try {
-			const air = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
-			const response = await fetch(air);
-			const data = await response.json();
-			return data;
-		} catch (err) {
-			console.log(err);
-		}
-	};
-
-	const getDirectGeocodingData = async (city) => {
-		try {
-			const location = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${API_KEY}`;
-			const response = await fetch(location);
-			const data = await response.json();
-			let lat = data[0].lat;
-			let lon = data[0].lon;
-			getWeatherData(lat, lon).then((data) => {
+			const geoDirect = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${API_KEY}`;
+			const geoDirectResponse = await fetch(geoDirect);
+			const geoDirectData = await geoDirectResponse.json();
+			let lat = geoDirectData[0].lat;
+			let lon = geoDirectData[0].lon;
+			getData(lat, lon).then((data) => {
 				document.getElementById('hourly-weather').innerHTML = '';
 				document.getElementById('daily-weather').innerHTML = '';
-				populateCurrentData(data);
-				populateForecastData(data);
-				populateAirQualityData(lat, lon);
-				getReverseGeocodingData(lat, lon);
+				populateCurrentData(data[0], geoDirectData[0].name);
+				populateForecastData(data[0]);
+				populateAirQualityData(data[1]);
 			});
-		} catch (err) {
-			console.log(err);
-		}
-	};
-
-	const getReverseGeocodingData = async (lat, lon) => {
-		try {
-			const location = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
-			const response = await fetch(location);
-			const data = await response.json();
-			let cityName = data[0].name;
-			getWeatherData(lat, lon, cityName).then((data) => {
-				populateCurrentData(data, cityName);
-			});
-		} catch (err) {
-			console.log(err);
+			return geoDirectData;
+		} catch (error) {
+			console.log(error);
 		}
 	};
 
@@ -120,35 +100,33 @@ const initApp = () => {
 		const city = search.value;
 
 		if (city) {
-			getDirectGeocodingData(city);
+			getGeoDirectData(city);
 			search.value = '';
 		}
 	});
 
-	function populateAirQualityData(lat, lon) {
-		getAirQualityData(lat, lon).then((data) => {
-			let aqi = data.list[0].main.aqi;
-			let title = 'Air - ';
-			let index = document.getElementById('aqi');
-			if (aqi == 1) {
-				index.innerText = title + 'Good';
-			} else if (aqi == 2) {
-				index.innerText = title + 'Fair';
-			} else if (aqi == 3) {
-				index.innerText = title + 'Moderate';
-			} else if (aqi == 4) {
-				index.innerText = title + 'Poor';
-			} else if (aqi == 5) {
-				index.innerText = title + 'Very Poor';
-			}
-		});
+	function populateAirQualityData(data) {
+		let aqi = data.list[0].main.aqi;
+		let title = 'Air - ';
+		let index = document.getElementById('aqi');
+
+		if (aqi == 1) {
+			index.innerText = title + 'Good';
+		} else if (aqi == 2) {
+			index.innerText = title + 'Fair';
+		} else if (aqi == 3) {
+			index.innerText = title + 'Moderate';
+		} else if (aqi == 4) {
+			index.innerText = title + 'Poor';
+		} else if (aqi == 5) {
+			index.innerText = title + 'Very Poor';
+		}
 	}
 
 	function populateCurrentData(data, cityName) {
-		let dateSunrise = new Date(data.current.sunrise * 1000);
-		let dateSunset = new Date(data.current.sunset * 1000);
-
 		if (cityName) {
+			let dateSunrise = new Date(data.current.sunrise * 1000);
+			let dateSunset = new Date(data.current.sunset * 1000);
 			document.getElementById('date').innerText = month + ', ' + day + ' ' + date.getDate();
 			document.getElementById('location').innerText = cityName;
 			document.getElementById('description').innerText = capitaliseString(data.current.weather[0].description);
@@ -172,7 +150,7 @@ const initApp = () => {
 
 	function populateForecastData(data) {
 		data.hourly
-			.slice(0, 25) // This
+			.slice(0, 25) // This shows only the first 24 hrs
 			.map((data) => {
 				let date = new Date(data.dt * 1000);
 				const hourlyList = document.createElement('div');
