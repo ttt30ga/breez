@@ -12,7 +12,7 @@
 	</head>
 	<body class="page">
 		<!-- Navigation -->
-		<section class="content">
+		<div class="header">
 			<nav class="navbar navbar-light">
 				<div class="container-fluid">
 					<a class="navbar-brand" href="#">
@@ -27,16 +27,22 @@
 					</form>
 				</div>
 			</nav>
-		</section>
+		</div>
 
-		<!-- Current -->
 		<section class="container-fluid">
 			<div class="row content">
 				<!-- Location -->
 				<div class="col-lg-9 col-md-6 col-sm-6 col-12">
 					<h1 class="titleL" id="location"></h1>
 					<h2 class="titleM secondary" id="date"></h2>
-					<h3 class="titleS tertiary space8" id="description"></h3>
+					<div class="flex horizontal space12 infos">
+						<div class="pill">
+							<h3 class="titleXS tertiary" id="description"></h3>
+						</div>
+						<div class="pill">
+							<h3 class="titleXS tertiary" id="aqi"></h3>
+						</div>
+					</div>
 				</div>
 
 				<!-- Temperature -->
@@ -44,12 +50,15 @@
 					<h3 class="titleXL align-right" id="temp"></h3>
 				</div>
 			</div>
+		</section>
 
+		<!-- Current -->
+		<section class="container-fluid">
 			<div class="row content">
 				<div class="col-lg-2 col-md-4 col-6">
 					<!-- Min -->
 					<div class="flex horizontal space8">
-						<div class="pill">
+						<div class="pillSquare">
 							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path
 									fill-rule="evenodd"
@@ -67,7 +76,7 @@
 
 					<!-- Max -->
 					<div class="flex horizontal space8">
-						<div class="pill">
+						<div class="pillSquare">
 							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path
 									fill-rule="evenodd"
@@ -87,7 +96,7 @@
 				<div class="col-lg-2 col-md-4 col-6">
 					<!-- Sunrise -->
 					<div class="flex horizontal space8">
-						<div class="pill">
+						<div class="pillSquare">
 							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path
 									fill-rule="evenodd"
@@ -105,7 +114,7 @@
 
 					<!-- Sunset -->
 					<div class="flex horizontal space8">
-						<div class="pill">
+						<div class="pillSquare">
 							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path
 									fill-rule="evenodd"
@@ -125,7 +134,7 @@
 				<div class="col-lg-2 col-md-4 col-6">
 					<!-- Wind -->
 					<div class="flex horizontal space8">
-						<div class="pill">
+						<div class="pillSquare">
 							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path
 									fill-rule="evenodd"
@@ -143,7 +152,7 @@
 
 					<!-- Wind Degree -->
 					<div class="flex horizontal space8">
-						<div class="pill">
+						<div class="pillSquare">
 							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path
 									fill-rule="evenodd"
@@ -163,7 +172,7 @@
 				<div class="col-lg-2 col-md-4 col-6">
 					<!-- Cloud -->
 					<div class="flex horizontal space8">
-						<div class="pill">
+						<div class="pillSquare">
 							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path
 									fill-rule="evenodd"
@@ -181,7 +190,7 @@
 
 					<!-- Visibility -->
 					<div class="flex horizontal space8">
-						<div class="pill">
+						<div class="pillSquare">
 							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path
 									fill-rule="evenodd"
@@ -201,7 +210,7 @@
 				<div class="col-lg-2 col-md-4 col-6">
 					<!-- Humidity -->
 					<div class="flex horizontal space8">
-						<div class="pill">
+						<div class="pillSquare">
 							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path
 									fill-rule="evenodd"
@@ -219,7 +228,7 @@
 
 					<!-- Pressure -->
 					<div class="flex horizontal space8">
-						<div class="pill">
+						<div class="pillSquare">
 							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path
 									fill-rule="evenodd"
@@ -239,7 +248,7 @@
 				<div class="col-lg-2 col-md-4 col-6">
 					<!-- Uvi -->
 					<div class="flex horizontal space8">
-						<div class="pill">
+						<div class="pillSquare">
 							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path
 									fill-rule="evenodd"
@@ -257,7 +266,7 @@
 
 					<!-- Dew Point -->
 					<div class="flex horizontal space8">
-						<div class="pill">
+						<div class="pillSquare">
 							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path
 									fill-rule="evenodd"

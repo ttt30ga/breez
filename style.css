@@ -3,7 +3,7 @@
 	--color-accent: rgba(119, 205, 255, 1);
 	--color-action: rgba(39, 255, 165, 1);
 	--color-background: rgba(255, 250, 235, 1);
-	--color-gost: rgba(25, 40, 70, 0.04);
+	--color-ghost: rgba(25, 40, 70, 0.04);
 	--color-main: rgba(35, 50, 85, 1);
 	--color-secondary: rgba(35, 50, 85, 0.3);
 	--color-tertiary: rgba(115, 129, 155, 1);
@@ -17,7 +17,8 @@
 	--font--sizeXS: 1.6rem; /* 16px */
 
 	/* Border Radius */
-	--border-radius: 1.6rem;
+	--border-radiusL: 4rem;
+	--border-radiusS: 1.6rem;
 }
 
 .row {
@@ -38,12 +39,16 @@ body {
 }
 
 section {
-	margin: 0 0 2rem;
+	margin: 0 0 1rem;
 }
 
 .page {
 	max-width: 1200px !important;
 	margin: auto;
+}
+
+.header {
+	padding: 0 2rem;
 }
 
 .content {
@@ -73,9 +78,19 @@ section {
 	text-align-last: right;
 }
 
+.infos > .pill {
+	margin-right: 1rem;
+}
+
 .pill {
-	background-color: var(--color-gost);
-	border-radius: var(--border-radius);
+	background-color: var(--color-ghost);
+	border-radius: var(--border-radiusL);
+	padding: 0.8rem 2rem;
+}
+
+.pillSquare {
+	background-color: var(--color-ghost);
+	border-radius: var(--border-radiusS);
 	padding: 1.2rem;
 	/* width: -moz-fit-content;
 	width: fit-content; */
@@ -187,7 +202,7 @@ span,
 .btn,
 .form-control,
 .card {
-	border-radius: var(--border-radius) !important;
+	border-radius: var(--border-radiusS) !important;
 }
 
 .btn,
@@ -197,7 +212,7 @@ span,
 
 .form-control,
 .card {
-	background-color: var(--color-gost) !important;
+	background-color: var(--color-ghost) !important;
 	border: none !important;
 	color: var(--color-main) !important;
 }
@@ -307,6 +322,10 @@ span,
 		margin-left: 10%;
 		-moz-text-align-last: center; /* For Firefox prior 58.0 */
 		text-align-last: center;
+	}
+	.infos > .pill {
+		margin-left: auto;
+		margin-right: auto;
 	}
 	.titleXL,
 	.titleL,

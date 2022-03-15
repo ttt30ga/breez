@@ -30,6 +30,7 @@ const initApp = () => {
 						document.getElementById('daily-weather').innerHTML = '';
 						populateCurrentData(data);
 						populateForecastData(data);
+						populateAirQualityData(lat, lon);
 						getReverseGeocodingData(lat, lon);
 					});
 				},
@@ -66,6 +67,17 @@ const initApp = () => {
 		}
 	};
 
+	const getAirQualityData = async (lat, lon) => {
+		try {
+			const air = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+			const response = await fetch(air);
+			const data = await response.json();
+			return data;
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
 	const getDirectGeocodingData = async (city) => {
 		try {
 			const location = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${API_KEY}`;
@@ -78,6 +90,7 @@ const initApp = () => {
 				document.getElementById('daily-weather').innerHTML = '';
 				populateCurrentData(data);
 				populateForecastData(data);
+				populateAirQualityData(lat, lon);
 				getReverseGeocodingData(lat, lon);
 			});
 		} catch (err) {
@@ -112,6 +125,25 @@ const initApp = () => {
 			search.value = '';
 		}
 	});
+
+	function populateAirQualityData(lat, lon) {
+		getAirQualityData(lat, lon).then((data) => {
+			let aqi = data.list[0].main.aqi;
+			let title = 'Air - ';
+			let index = document.getElementById('aqi');
+			if (aqi == 1) {
+				index.innerText = title + 'Good';
+			} else if (aqi == 2) {
+				index.innerText = title + 'Fair';
+			} else if (aqi == 3) {
+				index.innerText = title + 'Moderate';
+			} else if (aqi == 4) {
+				index.innerText = title + 'Poor';
+			} else if (aqi == 5) {
+				index.innerText = title + 'Very Poor';
+			}
+		});
+	}
 
 	function populateCurrentData(data, cityName) {
 		if (cityName) {
