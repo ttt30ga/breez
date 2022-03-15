@@ -15,7 +15,6 @@ const DAYS_SHORT = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 let date = new Date();
 let month = MONTHS[date.getMonth()];
 let day = DAYS[date.getDay()];
-let dayShort = DAYS_SHORT[date.getDay()];
 
 const initApp = () => {
 	function getGeolocation() {
@@ -146,6 +145,9 @@ const initApp = () => {
 	}
 
 	function populateCurrentData(data, cityName) {
+		let dateSunrise = new Date(data.current.sunrise * 1000);
+		let dateSunset = new Date(data.current.sunset * 1000);
+
 		if (cityName) {
 			document.getElementById('date').innerText = month + ', ' + day + ' ' + date.getDate();
 			document.getElementById('location').innerText = cityName;
@@ -162,9 +164,9 @@ const initApp = () => {
 			document.getElementById('dewPoint').innerText = Math.round(data.current.dew_point) + '°';
 			document.getElementById('uvi').innerText = data.current.uvi;
 			document.getElementById('sunrise').innerText =
-				new Date(data.current.sunrise * 1000).getHours() + ':' + new Date(data.current.sunrise * 1000).getMinutes();
+				dateSunrise.getHours() + ':' + (dateSunrise.getMinutes() < 10 ? '0' : '') + dateSunrise.getMinutes();
 			document.getElementById('sunset').innerText =
-				new Date(data.current.sunset * 1000).getHours() + ':' + new Date(data.current.sunset * 1000).getMinutes();
+				dateSunset.getHours() + ':' + (dateSunset.getMinutes() < 10 ? '0' : '') + dateSunset.getMinutes();
 		}
 	}
 
