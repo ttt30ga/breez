@@ -17,6 +17,24 @@ let month = MONTHS[date.getMonth()];
 let day = DAYS[date.getDay()];
 
 const initApp = () => {
+	let browserTitle = document.querySelector('title');
+	let location = document.getElementById('location');
+	let description = document.getElementById('description');
+	let temp = document.getElementById('temp');
+	let tempMin = document.getElementById('tempMin');
+	let tempMax = document.getElementById('tempMax');
+	let clouds = document.getElementById('clouds');
+	let wind = document.getElementById('wind');
+	let windDeg = document.getElementById('windDeg');
+	let humidity = document.getElementById('humidity');
+	let pressure = document.getElementById('pressure');
+	let visibility = document.getElementById('visibility');
+	let dewPoint = document.getElementById('dewPoint');
+	let uvi = document.getElementById('uvi');
+	let sunrise = document.getElementById('sunrise');
+	let sunset = document.getElementById('sunset');
+	let aqi = document.getElementById('aqi');
+
 	function getGeolocation() {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(
@@ -37,19 +55,35 @@ const initApp = () => {
 						});
 				},
 				(error) => {
-					let feedback = document.getElementById('feedback');
+					if (error) {
+						description.innerText = '-';
+						temp.innerText = '*';
+						tempMin.innerText = '-';
+						tempMax.innerText = '-';
+						clouds.innerText = '-';
+						wind.innerText = '-';
+						windDeg.innerText = '-';
+						humidity.innerText = '-';
+						pressure.innerText = '-';
+						visibility.innerText = '-';
+						dewPoint.innerText = '-';
+						uvi.innerText = '-';
+						sunrise.innerText = '-';
+						sunset.innerText = '-';
+						aqi.innerText = '-';
+					}
 					switch (error.code) {
 						case error.PERMISSION_DENIED:
-							feedback.innerHTML = 'User denied the request for Geolocation.';
+							location.innerHTML = 'User denied Geolocation request.';
 							break;
 						case error.POSITION_UNAVAILABLE:
-							feedback.innerHTML = 'Location information is unavailable.';
+							location.innerHTML = 'Location unavailable.';
 							break;
 						case error.TIMEOUT:
-							feedback.innerHTML = 'The request to get user location timed out.';
+							location.innerHTML = 'Request has timed out.';
 							break;
 						case error.UNKNOWN_ERROR:
-							feedback.innerHTML = 'An unknown error occurred.';
+							location.innerHTML = 'Unknown error occurred.';
 							break;
 					}
 				}
@@ -107,20 +141,19 @@ const initApp = () => {
 	});
 
 	function populateAirQualityData(data) {
-		let aqi = data.list[0].main.aqi;
-		let title = 'Air - ';
-		let index = document.getElementById('aqi');
+		let index = data.list[0].main.aqi;
+		let aqi = document.getElementById('aqi');
 
-		if (aqi == 1) {
-			index.innerText = title + 'Good';
-		} else if (aqi == 2) {
-			index.innerText = title + 'Fair';
-		} else if (aqi == 3) {
-			index.innerText = title + 'Moderate';
-		} else if (aqi == 4) {
-			index.innerText = title + 'Poor';
-		} else if (aqi == 5) {
-			index.innerText = title + 'Very Poor';
+		if (index == 1) {
+			aqi.innerText = title + 'Good';
+		} else if (index == 2) {
+			aqi.innerText = title + 'Fair';
+		} else if (index == 3) {
+			aqi.innerText = title + 'Moderate';
+		} else if (index == 4) {
+			aqi.innerText = title + 'Poor';
+		} else if (index == 5) {
+			aqi.innerText = title + 'Very Poor';
 		}
 	}
 
@@ -128,25 +161,24 @@ const initApp = () => {
 		if (cityName) {
 			let dateSunrise = new Date(data.current.sunrise * 1000);
 			let dateSunset = new Date(data.current.sunset * 1000);
-			document.querySelector('title').innerText = cityName + ' ' + Math.round(data.current.temp) + '°';
-			document.getElementById('date').innerText = month + ', ' + day + ' ' + date.getDate();
-			document.getElementById('location').innerText = cityName;
-			document.getElementById('description').innerText = capitaliseString(data.current.weather[0].description);
-			document.getElementById('temp').innerText = Math.round(data.current.temp) + '°';
-			document.getElementById('tempMin').innerText = Math.round(data.daily[0].temp.min) + '°';
-			document.getElementById('tempMax').innerText = Math.round(data.daily[0].temp.max) + '°';
-			document.getElementById('clouds').innerText = data.current.clouds + '%';
-			document.getElementById('wind').innerText = data.current.wind_speed + ' km/h';
-			document.getElementById('windDeg').innerText = data.current.wind_deg;
-			document.getElementById('humidity').innerText = data.current.humidity + '%';
-			document.getElementById('pressure').innerText = data.current.pressure + ' hPa';
-			document.getElementById('visibility').innerText = data.current.visibility / 1000 + ' km';
-			document.getElementById('dewPoint').innerText = Math.round(data.current.dew_point) + '°';
-			document.getElementById('uvi').innerText = data.current.uvi;
-			document.getElementById('sunrise').innerText =
-				dateSunrise.getHours() + ':' + (dateSunrise.getMinutes() < 10 ? '0' : '') + dateSunrise.getMinutes();
-			document.getElementById('sunset').innerText =
-				dateSunset.getHours() + ':' + (dateSunset.getMinutes() < 10 ? '0' : '') + dateSunset.getMinutes();
+
+			browserTitle.innerText = cityName + ' ' + Math.round(data.current.temp) + '°';
+			date.innerText = month + ', ' + day + ' ' + date.getDate();
+			location.innerText = cityName;
+			description.innerText = capitaliseString(data.current.weather[0].description);
+			temp.innerText = Math.round(data.current.temp) + '°';
+			tempMin.innerText = Math.round(data.daily[0].temp.min) + '°';
+			tempMax.innerText = Math.round(data.daily[0].temp.max) + '°';
+			clouds.innerText = data.current.clouds + '%';
+			wind.innerText = data.current.wind_speed + ' km/h';
+			windDeg.innerText = data.current.wind_deg;
+			humidity.innerText = data.current.humidity + '%';
+			pressure.innerText = data.current.pressure + ' hPa';
+			visibility.innerText = data.current.visibility / 1000 + ' km';
+			dewPoint.innerText = Math.round(data.current.dew_point) + '°';
+			uvi.innerText = data.current.uvi;
+			sunrise.innerText = dateSunrise.getHours() + ':' + (dateSunrise.getMinutes() < 10 ? '0' : '') + dateSunrise.getMinutes();
+			sunset.innerText = dateSunset.getHours() + ':' + (dateSunset.getMinutes() < 10 ? '0' : '') + dateSunset.getMinutes();
 		}
 	}
 
