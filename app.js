@@ -107,6 +107,7 @@ const initApp = () => {
 	};
 
 	const getGeoDirectData = async (city) => {
+		console.log(city);
 		try {
 			const geoDirect = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${API_KEY}`;
 			const geoDirectResponse = await fetch(geoDirect);
@@ -122,7 +123,7 @@ const initApp = () => {
 			});
 			return geoDirectData;
 		} catch (error) {
-			console.log(error);
+			location.innerHTML = 'No internet connection.';
 		}
 	};
 
