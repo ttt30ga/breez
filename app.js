@@ -74,16 +74,16 @@ const initApp = () => {
 					}
 					switch (error.code) {
 						case error.PERMISSION_DENIED:
-							location.innerHTML = 'User denied Geolocation request.';
+							location.innerHTML = '⚠️ Geolocation request denied.';
 							break;
 						case error.POSITION_UNAVAILABLE:
-							location.innerHTML = 'Location unavailable.';
+							location.innerHTML = '🌍 Location unavailable.';
 							break;
 						case error.TIMEOUT:
-							location.innerHTML = 'Request has timed out.';
+							location.innerHTML = '⏰ Timed out request.';
 							break;
 						case error.UNKNOWN_ERROR:
-							location.innerHTML = 'Unknown error occurred.';
+							location.innerHTML = '🤔 Unknown error occurred.';
 							break;
 					}
 				}
