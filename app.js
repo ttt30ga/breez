@@ -107,7 +107,6 @@ const initApp = () => {
 	};
 
 	const getGeoDirectData = async (city) => {
-		console.log(city);
 		try {
 			const geoDirect = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${API_KEY}`;
 			const geoDirectResponse = await fetch(geoDirect);
@@ -123,7 +122,7 @@ const initApp = () => {
 			});
 			return geoDirectData;
 		} catch (error) {
-			location.innerHTML = 'No internet connection.';
+			location.innerHTML = '📡 No internet connection.';
 		}
 	};
 
@@ -159,10 +158,10 @@ const initApp = () => {
 	}
 
 	function populateCurrentData(data, cityName) {
-		if (cityName) {
-			let dateSunrise = new Date(data.current.sunrise * 1000);
-			let dateSunset = new Date(data.current.sunset * 1000);
+		// TODO: Add all data to an object so to map through and create string HTML
+		// TODO: Remove html tags from index.html
 
+		if (cityName) {
 			browserTitle.innerText = cityName + ' ' + Math.round(data.current.temp) + '°';
 			date.innerText = month + ', ' + day + ' ' + date.getDate();
 			location.innerText = cityName;
