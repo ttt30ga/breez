@@ -142,18 +142,17 @@ const initApp = () => {
 
 	function populateAirQualityData(data) {
 		let index = data.list[0].main.aqi;
-		let aqi = document.getElementById('aqi');
 
 		if (index == 1) {
-			aqi.innerText = title + 'Good';
+			aqi.innerText = 'Air - Good';
 		} else if (index == 2) {
-			aqi.innerText = title + 'Fair';
+			aqi.innerText = 'Air - Fair';
 		} else if (index == 3) {
-			aqi.innerText = title + 'Moderate';
+			aqi.innerText = 'Air - Moderate';
 		} else if (index == 4) {
-			aqi.innerText = title + 'Poor';
+			aqi.innerText = 'Air - Poor';
 		} else if (index == 5) {
-			aqi.innerText = title + 'Very Poor';
+			aqi.innerText = 'Air - Very Poor';
 		}
 	}
 
@@ -162,6 +161,8 @@ const initApp = () => {
 		// TODO: Remove html tags from index.html
 
 		if (cityName) {
+			let dateSunrise = new Date(data.current.sunrise * 1000);
+			let dateSunset = new Date(data.current.sunset * 1000);
 			browserTitle.innerText = cityName + ' ' + Math.round(data.current.temp) + '°';
 			date.innerText = month + ', ' + day + ' ' + date.getDate();
 			location.innerText = cityName;
