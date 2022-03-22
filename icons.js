@@ -2,7 +2,12 @@ const sun = `
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="12" cy="12" r="10" fill="#FFC634"/>
     </svg>
+`;
 
+const moon = `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="10" fill="#8798B5"/>
+    </svg>
 `;
 
 const fewClouds = `
@@ -12,15 +17,28 @@ const fewClouds = `
     </svg>
 `;
 
+const fewCloudsNight = `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16.5" cy="9.5" r="5.5" fill="#8798B5"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M2 14C2 17.866 5.13401 21 9 21H17C19.7614 21 22 18.7614 22 16C22 13.2386 19.7614 11 17 11C16.4547 11 15.9299 11.0873 15.4386 11.2486C14.3696 8.75042 11.8892 7 9 7C5.13401 7 2 10.134 2 14Z" fill="#D0D7E9"/>
+    </svg>
+`;
+
 const scatteredClouds = `
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M2 12C2 15.866 5.13401 19 9 19H17C19.7614 19 22 16.7614 22 14C22 11.2386 19.7614 9 17 9C16.4547 9 15.9299 9.08728 15.4386 9.24864C14.3696 6.75042 11.8892 5 9 5C5.13401 5 2 8.13401 2 12Z" fill="#CCD2E3"/>
     </svg>
 `;
 
+const scatteredCloudsNight = `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M2 12C2 15.866 5.13401 19 9 19H17C19.7614 19 22 16.7614 22 14C22 11.2386 19.7614 9 17 9C16.4547 9 15.9299 9.08728 15.4386 9.24864C14.3696 6.75042 11.8892 5 9 5C5.13401 5 2 8.13401 2 12Z" fill="#D0D7E9"/>
+    </svg>
+`;
+
 const brokenClouds = `
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M2 12C2 15.866 5.13401 19 9 19H17C19.7614 19 22 16.7614 22 14C22 11.2386 19.7614 9 17 9C16.4547 9 15.9299 9.08728 15.4386 9.24864C14.3696 6.75042 11.8892 5 9 5C5.13401 5 2 8.13401 2 12Z" fill="#72819B"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M2 12C2 15.866 5.13401 19 9 19H17C19.7614 19 22 16.7614 22 14C22 11.2386 19.7614 9 17 9C16.4547 9 15.9299 9.08728 15.4386 9.24864C14.3696 6.75042 11.8892 5 9 5C5.13401 5 2 8.13401 2 12Z" fill="#566580"/>
     </svg>
 `;
 
@@ -59,16 +77,21 @@ const snow = `
 
 const mist = `
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="6" y="5" width="16" height="1" fill="#CCD2E3"/>
-        <rect x="2" y="7" width="16" height="1" fill="#CCD2E3"/>
-        <rect x="6" y="9" width="16" height="1" fill="#CCD2E3"/>
-        <rect x="2" y="11" width="16" height="1" fill="#CCD2E3"/>
-        <rect x="6" y="13" width="16" height="1" fill="#CCD2E3"/>
-        <rect x="2" y="15" width="16" height="1" fill="#CCD2E3"/>
-        <rect x="6" y="17" width="16" height="1" fill="#CCD2E3"/>
-        <rect x="2" y="19" width="16" height="1" fill="#CCD2E3"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M22 5H6V6H22V5ZM18 7H2V8H18V7ZM6 9H22V10H6V9ZM18 11H2V12H18V11ZM6 13H22V14H6V13ZM18 15H2V16H18V15ZM6 17H22V18H6V17ZM18 19H2V20H18V19Z" fill="#CCD2E3"/>
     </svg>
-
 `;
 
-export { sun, fewClouds, scatteredClouds, brokenClouds, showerRain, rain, thunderstorm, snow, mist };
+export {
+	sun,
+	moon,
+	fewClouds,
+	fewCloudsNight,
+	scatteredClouds,
+	scatteredCloudsNight,
+	brokenClouds,
+	showerRain,
+	rain,
+	thunderstorm,
+	snow,
+	mist,
+};

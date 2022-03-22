@@ -192,7 +192,7 @@ const initApp = () => {
 
 				hourlyList.innerHTML = `
 				<div class="flex vertical hourly details">
-					${populateIcon(data.weather[0].id)}
+					${populateIcon(data.weather[0].id, data.weather[0].icon)}
 					<h5 class="titleXS secondary">${date.getHours()}</h5>
 				</div>
 				`;
@@ -210,7 +210,7 @@ const initApp = () => {
 				<div class="card-body">
 					<div class="flex horizontal details">
 						<h5 class="titleS">${DAYS_SHORT[date.getDay()] + ' ' + date.getDate()}</h5>
-						${populateIcon(data.weather[0].id)}
+						${populateIcon(data.weather[0].id, data.weather[0].icon)}
 					</div>
 					<div class="description">
 						<h4 class="titleXS-regular tertiary">${capitaliseString(data.weather[0].description)}</h4>
@@ -230,7 +230,7 @@ const initApp = () => {
 			.join('');
 	}
 
-	function populateIcon(id) {
+	function populateIcon(id, iconCode) {
 		if (id >= 200 && id <= 232) {
 			return icon.thunderstorm;
 		} else if (id >= 300 && id <= 321) {
@@ -246,11 +246,23 @@ const initApp = () => {
 		} else if (id >= 700 && id <= 781) {
 			return icon.showerRain;
 		} else if (id == 800) {
-			return icon.sun;
+			if (iconCode == '01d') {
+				return icon.sun;
+			} else {
+				return icon.moon;
+			}
 		} else if (id == 801) {
-			return icon.fewClouds;
+			if (iconCode == '02d') {
+				return icon.fewClouds;
+			} else {
+				return icon.fewCloudsNight;
+			}
 		} else if (id == 802) {
-			return icon.scatteredClouds;
+			if (iconCode == '03d') {
+				return icon.scatteredClouds;
+			} else {
+				return icon.scatteredCloudsNight;
+			}
 		} else if (id == 803 || id == 804) {
 			return icon.brokenClouds;
 		}
