@@ -15,6 +15,7 @@ const DAYS_SHORT = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 let date = new Date();
 let month = MONTHS[date.getMonth()];
 let day = DAYS[date.getDay()];
+let offset = date.getTimezoneOffset() * 60;
 
 const initApp = () => {
 	let browserTitle = document.querySelector('title');
@@ -159,10 +160,10 @@ const initApp = () => {
 	function populateCurrentData(data, cityName) {
 		// TODO: Add all data to an object so to map through and create string HTML
 		// TODO: Remove html tags from index.html
-
 		if (cityName) {
-			let dateSunrise = new Date(data.current.sunrise * 1000);
-			let dateSunset = new Date(data.current.sunset * 1000);
+			let dateSunrise = new Date((data.current.sunrise + data.timezone_offset + offset) * 1000);
+			let dateSunset = new Date((data.current.sunset + data.timezone_offset + offset) * 1000);
+
 			browserTitle.innerText = cityName + ' ' + Math.round(data.current.temp) + '°';
 			date.innerText = month + ', ' + day + ' ' + date.getDate();
 			location.innerText = cityName;
