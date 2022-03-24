@@ -187,13 +187,13 @@ const initApp = () => {
 	function populateForecastData(data) {
 		data.hourly
 			.slice(0, 25) // This shows only the first 24 hrs
-			.map((data) => {
-				let date = new Date(data.dt * 1000);
+			.map((dataHourly) => {
+				let date = new Date((dataHourly.dt + data.timezone_offset + offset) * 1000);
 				const hourlyList = document.createElement('div');
 
 				hourlyList.innerHTML = `
 				<div class="flex vertical hourly details">
-					${populateIcon(data.weather[0].id, data.weather[0].icon)}
+					${populateIcon(dataHourly.weather[0].id, dataHourly.weather[0].icon)}
 					<h5 class="titleXS secondary">${date.getHours()}</h5>
 				</div>
 				`;
@@ -202,8 +202,8 @@ const initApp = () => {
 
 		data.daily
 			.slice(1) // This skip the 1st entry which is the current day
-			.map((data) => {
-				let date = new Date(data.dt * 1000);
+			.map((dataDaily) => {
+				let date = new Date(dataDaily.dt * 1000);
 				const dailyList = document.createElement('div');
 				dailyList.classList.add('card');
 
@@ -211,18 +211,18 @@ const initApp = () => {
 				<div class="card-body">
 					<div class="flex horizontal details">
 						<h5 class="titleS">${DAYS_SHORT[date.getDay()] + ' ' + date.getDate()}</h5>
-						${populateIcon(data.weather[0].id, data.weather[0].icon)}
+						${populateIcon(dataDaily.weather[0].id, dataDaily.weather[0].icon)}
 					</div>
 					<div class="description">
-						<h4 class="titleXS-regular tertiary">${capitaliseString(data.weather[0].description)}</h4>
+						<h4 class="titleXS-regular tertiary">${capitaliseString(dataDaily.weather[0].description)}</h4>
 					</div>
 					<div class="flex horizontal details space8">
 						<h3 class="titleXS secondary">Min</h3>
-						<h3 class="titleXS primary">${Math.round(data.temp.min) + '°'}</h3>
+						<h3 class="titleXS primary">${Math.round(dataDaily.temp.min) + '°'}</h3>
 					</div>
 					<div class="flex horizontal details">
 						<h3 class="titleXS secondary">Max</h3>
-						<h3 class="titleXS primary">${Math.round(data.temp.max) + '°'}</h3>
+						<h3 class="titleXS primary">${Math.round(dataDaily.temp.max) + '°'}</h3>
 					</div>
 				</div>
 				`;
