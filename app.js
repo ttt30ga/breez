@@ -182,6 +182,7 @@ const initApp = () => {
 			sunrise.innerText = dateSunrise.getHours() + ':' + (dateSunrise.getMinutes() < 10 ? '0' : '') + dateSunrise.getMinutes();
 			sunset.innerText = dateSunset.getHours() + ':' + (dateSunset.getMinutes() < 10 ? '0' : '') + dateSunset.getMinutes();
 		}
+		switchTheme(data);
 	}
 
 	function populateForecastData(data) {
@@ -271,5 +272,15 @@ const initApp = () => {
 
 	function capitaliseString(word) {
 		return word.charAt(0).toUpperCase() + word.slice(1);
+	}
+
+	function switchTheme(data) {
+		let dateSunrise = new Date((data.current.sunrise + data.timezone_offset + offset) * 1000);
+		let dateSunset = new Date((data.current.sunset + data.timezone_offset + offset) * 1000);
+		let dateTime = new Date((data.current.dt + data.timezone_offset + offset) * 1000);
+
+		dateTime < dateSunrise || dateTime > dateSunset
+			? document.documentElement.setAttribute('data-theme', 'dark')
+			: document.documentElement.setAttribute('data-theme', 'light');
 	}
 };
