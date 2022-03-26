@@ -1,8 +1,15 @@
 :root {
-	/* Colors */
+	/* Theme Fixed */
 	--color-fixed-accent: rgba(120, 205, 255, 1);
 	--color-fixed-action: rgba(40, 255, 165, 1);
 	--color-fixed-dark: rgba(35, 50, 85, 1);
+
+	/* Theme Light */
+	--color-background: rgba(255, 250, 235, 1);
+	--color-ghost: rgba(25, 40, 70, 0.05);
+	--color-main: rgba(35, 50, 85, 1);
+	--color-secondary: rgba(35, 50, 85, 0.4);
+	--color-tertiary: rgba(115, 130, 155, 1);
 
 	/* Font Sizes */
 	font-size: 62.5%; /* (62.5/100) * 16px = 10px */
@@ -17,15 +24,8 @@
 	--border-radiusS: 1.6rem;
 }
 
-[data-theme='light'] {
-	--color-background: rgba(255, 250, 235, 1);
-	--color-ghost: rgba(25, 40, 70, 0.05);
-	--color-main: rgba(35, 50, 85, 1);
-	--color-secondary: rgba(35, 50, 85, 0.4);
-	--color-tertiary: rgba(115, 130, 155, 1);
-}
-
 [data-theme='dark'] {
+	/* Theme Dark */
 	--color-background: rgba(35, 35, 47, 1);
 	--color-ghost: rgba(166, 166, 233, 0.08);
 	--color-main: rgba(255, 250, 235, 1);
