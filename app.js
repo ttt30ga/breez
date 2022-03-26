@@ -56,35 +56,19 @@ const initApp = () => {
 						});
 				},
 				(error) => {
-					if (error) {
-						description.innerText = '-';
-						temp.innerText = '*';
-						tempMin.innerText = '-';
-						tempMax.innerText = '-';
-						clouds.innerText = '-';
-						wind.innerText = '-';
-						windDeg.innerText = '-';
-						humidity.innerText = '-';
-						pressure.innerText = '-';
-						visibility.innerText = '-';
-						dewPoint.innerText = '-';
-						uvi.innerText = '-';
-						sunrise.innerText = '-';
-						sunset.innerText = '-';
-						aqi.innerText = '-';
-					}
+					isError(error);
 					switch (error.code) {
 						case error.PERMISSION_DENIED:
-							location.innerHTML = '⚠️ Geolocation request denied.';
+							location.innerText = '⚠️ Geolocation request denied.';
 							break;
 						case error.POSITION_UNAVAILABLE:
-							location.innerHTML = '🌍 Location unavailable.';
+							location.innerText = '📡 No internet.';
 							break;
 						case error.TIMEOUT:
-							location.innerHTML = '⏰ Timed out request.';
+							location.innerText = '⏰ Timed out request.';
 							break;
 						case error.UNKNOWN_ERROR:
-							location.innerHTML = '🤔 Unknown error occurred.';
+							location.innerText = '🤔 Unknown error occurred.';
 							break;
 					}
 				}
@@ -123,7 +107,8 @@ const initApp = () => {
 			});
 			return geoDirectData;
 		} catch (error) {
-			location.innerHTML = '📡 No internet connection.';
+			location.innerText = '🗺️ Where to?';
+			isError(error);
 		}
 	};
 
@@ -282,5 +267,27 @@ const initApp = () => {
 		dateTime < dateSunrise || dateTime > dateSunset
 			? document.documentElement.setAttribute('data-theme', 'dark')
 			: document.documentElement.setAttribute('data-theme', 'light');
+	}
+
+	function isError(error) {
+		document.getElementById('hourly-weather').innerHTML = '';
+		document.getElementById('daily-weather').innerHTML = '';
+		if (error) {
+			description.innerText = '-';
+			temp.innerText = '';
+			tempMin.innerText = '-';
+			tempMax.innerText = '-';
+			clouds.innerText = '-';
+			wind.innerText = '-';
+			windDeg.innerText = '-';
+			humidity.innerText = '-';
+			pressure.innerText = '-';
+			visibility.innerText = '-';
+			dewPoint.innerText = '-';
+			uvi.innerText = '-';
+			sunrise.innerText = '-';
+			sunset.innerText = '-';
+			aqi.innerText = '-';
+		}
 	}
 };
