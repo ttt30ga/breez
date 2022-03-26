@@ -62,7 +62,7 @@ const initApp = () => {
 							location.innerText = '⚠️ Geolocation request denied.';
 							break;
 						case error.POSITION_UNAVAILABLE:
-							location.innerText = '📡 No internet.';
+							navigator.onLine ? (location.innerText = '🌍 Location unavailable.') : (location.innerText = '📡 No internet.');
 							break;
 						case error.TIMEOUT:
 							location.innerText = '⏰ Timed out request.';
