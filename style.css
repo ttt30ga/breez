@@ -322,6 +322,9 @@ span,
 	.page {
 		margin: auto;
 	}
+	.search {
+		margin-top: 2rem;
+	}
 	.content:first-child {
 		margin-bottom: 0;
 	}
