@@ -6,7 +6,7 @@ document.addEventListener('readystatechange', (event) => {
 	}
 });
 
-const API_KEY = '5a7b2510914a22fd7ba68845a8b74973';
+const API_KEY = 'xxxxx';
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const DAYS_SHORT = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
