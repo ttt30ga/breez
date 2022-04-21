@@ -2,19 +2,14 @@
   <img src="./images/logo.svg" width="300px">
 </p>
 
-<p align="center">A web-based weather app</p>
-
 ## About
 
 Breez is a weather app for the web made with plain HTML, CSS and Javascript
 
-## Data
-
-Breez uses data from the [OpenWeather API](https://openweathermap.org/api).
-
 ## Usage
 
-You can freely download the project and register [here](https://openweathermap.org/api) to get your API KEY.
+Breez uses data from the [OpenWeather API](https://openweathermap.org/api).\
+Use the link above and register to get your own API KEY to get started.\
 At that point just add the key in `app.js`
 
 ```javascript
@@ -27,6 +22,7 @@ const API_KEY = 'xxxxx';
 
 -   **Geolocation** - Get geographical position of the user.
 -   **Search City** - Search over 200,000 cities.
+-   **Dark & Light Mode** - Theme switches based on day and night times of the searched city.
 -   **Air Quality Index** - Current air pollution data.
 -   **Hourly Forecast** - Display weather forecast for the next 24 hrs.
 -   **Daily Forecast** - Display weather forecast for the following 7 days.
@@ -42,8 +38,5 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ![Breez Light](./images/breez-light.png)
 ![Breez Dark](./images/breez-dark.png)
-
-<p float="left">
-  <img src="./images/breez-geolocation-denied.png" width="49%" align="left"/>
-  <img src="./images/breez-no-internet.png" width="49%" align="right"/> 
-</p>
+![](./images/breez-geolocation-denied.png)
+![](./images/breez-no-internet.png)
