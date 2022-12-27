@@ -233,6 +233,7 @@ span,
 .btn {
 	background: var(--color-fixed-action) !important;
 	color: var(--color-fixed-dark) !important;
+	font-weight: bold !important;
 }
 
 .icons {
